@@ -1,7 +1,6 @@
 import flet as ft
-import funcionalidades.cadastros.cadastros  as cadastros
+import funcionalidades.cadastros  as cadastros
 
-body_content = ft.Column([ft.Text("Selecione uma opção no menu")], alignment=ft.MainAxisAlignment.START, expand=True)
 
 def pilotos():
     return ft.DataTable(
@@ -37,21 +36,23 @@ def update_content(index, body_content):
     body_content.controls.clear() 
 
     if index == 0: 
+        body_content.controls.append(cadastros.home())
+    if index == 1: 
         body_content.controls.append(ft.Text("Cadastrar Pilotos", size=20))
         body_content.controls.append(cadastros.cadastrar_piloto())
 
-    elif index == 1: 
+    elif index == 2: 
         body_content.controls.append(ft.Text("Cadastrar Comissários", size=20))
         body_content.controls.append(cadastros.cadastrar_comissario())
 
-    elif index == 2:  
+    elif index == 3:  
         body_content.controls.append(ft.Text("Criar Tripulação", size=20))
 
-    elif index == 3: 
+    elif index == 4: 
         body_content.controls.append(ft.Text("Cadastrar Aviões", size=20))
         body_content.controls.append(cadastros.cadastrar_aviao())
 
-    elif index == 4:  
+    elif index == 5:  
         body_content.controls.append(ft.Text("Criar Voo", size=20))
 
     body_content.update() 
@@ -63,8 +64,11 @@ def main(page: ft.Page):
     page.scroll = "adaptive"
     page.vertical_alignment = ft.MainAxisAlignment.CENTER
     page.update()
-
+    
+    # body_content = ft.Column([ft.Text("Selecione uma opção no menu")], alignment=ft.MainAxisAlignment.START, expand=True)
     body_content = ft.Column(alignment=ft.MainAxisAlignment.START, expand=True)
+    body_content.controls.append(cadastros.home())
+
 
     rail = ft.NavigationRail(
         selected_index=0,
@@ -73,6 +77,9 @@ def main(page: ft.Page):
         min_extended_width=400,
         group_alignment=-0.9,
         destinations=[
+             ft.NavigationRailDestination(
+                icon=ft.icons.HOME_OUTLINED, selected_icon=ft.icons.HOME_ROUNDED, label="Home"
+            ),
             ft.NavigationRailDestination(
                 icon=ft.icons.PERSON_4_OUTLINED, selected_icon=ft.icons.PERSON_4_ROUNDED, label="Pilotos"
             ),
