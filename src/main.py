@@ -49,6 +49,7 @@ def update_content(index, body_content):
 
     elif index == 3: 
         body_content.controls.append(ft.Text("Cadastrar Aviões", size=20))
+        body_content.controls.append(cadastros.cadastrar_aviao())
 
     elif index == 4:  
         body_content.controls.append(ft.Text("Criar Voo", size=20))

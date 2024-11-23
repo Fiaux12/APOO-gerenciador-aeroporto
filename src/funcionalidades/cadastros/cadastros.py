@@ -25,13 +25,6 @@ def cadastrar_piloto():
     aviao_carga = ft.Checkbox(label="Carga", on_change=aviao_carga_changed)
     aviao_passageiro = ft.Checkbox(label="Passageiro", on_change=aviao_passageiro_changed)
 
-
-    if aviao_carga.value == True:
-        aviao_passageiro.value = False
-
-    if aviao_passageiro.value == True:
-        aviao_carga.value = False
-
     cadastrar = ft.ElevatedButton(text="Cadastrar", on_click=button_clicked)
 
     return ft.Column(controls=[nome, cpf, licenca, tipo_aviao, aviao_carga, aviao_passageiro, cadastrar, t])
@@ -61,3 +54,52 @@ def cadastrar_comissario():
     cadastrar = ft.ElevatedButton(text="Cadastrar", on_click=button_clicked)
 
     return ft.Column(controls=[nome, cpf, certificado, tipo_aviao, portugues, ingues, alemao, russo, chines, japones, frances, italiano, cadastrar, t])
+
+
+def cadastrar_aviao():
+    def button_clicked(e):
+        t.value = f"Textboxes values are: '{capacidade_max.value}', '{velocidade_max.value}', '{qtd_motores.value}'."
+        t.update()
+
+    def aviao_carga_changed(e):
+        if aviao_carga.value:
+            aviao_passageiro.value = False
+            aviao_passageiro.update()
+
+    def aviao_passageiro_changed(e):
+        if aviao_passageiro.value:
+            aviao_carga.value = False
+            aviao_carga.update()
+
+    # TODO: implementar regras para inserir dados
+    t = ft.Text()
+    capacidade_max = ft.TextField(label="Capacidade Máxima")
+    velocidade_max = ft.TextField(label="Valocidade Máxima")
+    qtd_motores = ft.TextField(label="Número do Motores")
+    modelo = ft.TextField(label="Modelo")
+    consumo = ft.TextField(label="Consumo em km/h")
+    peso_maximo = ft.TextField(label="Peso Máximo")
+    serie = ft.TextField(label="Número de Série")
+
+    tipo_aviao = ft.Text("Tipo de avião", size=15)
+    aviao_carga = ft.Checkbox(label="Carga", on_change=aviao_carga_changed)
+    aviao_passageiro = ft.Checkbox(label="Passageiro", on_change=aviao_passageiro_changed)
+
+    cadastrar = ft.ElevatedButton(text="Cadastrar", on_click=button_clicked)
+
+    return ft.Column(
+        controls=[
+            capacidade_max,
+            velocidade_max, 
+            qtd_motores, 
+            modelo, 
+            consumo, 
+            peso_maximo, 
+            serie, 
+            tipo_aviao,
+            aviao_carga,
+            aviao_passageiro,
+            cadastrar,
+            t
+        ]
+    )
