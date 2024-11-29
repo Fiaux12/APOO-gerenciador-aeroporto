@@ -19,7 +19,7 @@ class Voo():
         raio_terra = 6371
 
         delta_lat = self.origem.coordenadas.latitude - self.destino.coordenadas.latitude
-        delta_lon = self.origem.coordenadas.latitude - self.destino.coordenadas.latitude
+        delta_lon = self.origem.coordenadas.longitude - self.destino.coordenadas.longitude
         
         aux1 = math.sin(delta_lat / 2)**2 + math.cos(self.origem.coordenadas.latitude) * math.cos(self.destino.coordenadas.latitude) * math.sin(delta_lon / 2)**2
         distancia = 2 * raio_terra * math.asin(math.sqrt(aux1))
