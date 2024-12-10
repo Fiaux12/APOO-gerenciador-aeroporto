@@ -43,8 +43,8 @@ def update_content(index, body_content):
 
 def main(page: ft.Page):
     page.title = "Gerenciador de Voos"
-    page.window_width = 1300
-    page.window_height = 700
+    page.window.width = 1300
+    page.window.height = 700
     page.scroll = "none"  
     page.vertical_alignment = ft.MainAxisAlignment.START
     page.update()
@@ -64,22 +64,22 @@ def main(page: ft.Page):
         group_alignment=-0.9,
         destinations=[
             ft.NavigationRailDestination(
-                icon=ft.icons.HOME_OUTLINED, selected_icon=ft.icons.HOME_ROUNDED, label="Home"
+                icon=ft.Icons.HOME_OUTLINED, selected_icon=ft.Icons.HOME_ROUNDED, label="Home"
             ),
             ft.NavigationRailDestination(
-                icon=ft.icons.PERSON_4_OUTLINED, selected_icon=ft.icons.PERSON_4_ROUNDED, label="Pilotos"
+                icon=ft.Icons.PERSON_4_OUTLINED, selected_icon=ft.Icons.PERSON_4_ROUNDED, label="Pilotos"
             ),
             ft.NavigationRailDestination(
-                icon=ft.icons.PERSON_3_OUTLINED, selected_icon=ft.icons.PERSON_3_ROUNDED, label="Comissários"
+                icon=ft.Icons.PERSON_3_OUTLINED, selected_icon=ft.Icons.PERSON_3_ROUNDED, label="Comissários"
             ),
             ft.NavigationRailDestination(
-                icon=ft.icons.GROUPS_3_OUTLINED, selected_icon=ft.icons.GROUPS_3_ROUNDED, label="Tripulação"
+                icon=ft.Icons.GROUPS_3_OUTLINED, selected_icon=ft.Icons.GROUPS_3_ROUNDED, label="Tripulação"
             ),
             ft.NavigationRailDestination(
-                icon=ft.icons.FLIGHT_OUTLINED, selected_icon=ft.icons.FLIGHT, label="Aviões"
+                icon=ft.Icons.FLIGHT_OUTLINED, selected_icon=ft.Icons.FLIGHT, label="Aviões"
             ),
             ft.NavigationRailDestination(
-                icon=ft.icons.FLIGHT_TAKEOFF_OUTLINED, selected_icon=ft.icons.FLIGHT_TAKEOFF, label="Voos"
+                icon=ft.Icons.FLIGHT_TAKEOFF_OUTLINED, selected_icon=ft.Icons.FLIGHT_TAKEOFF, label="Voos"
             ),
         ],
         on_change=lambda e: update_content(e.control.selected_index, body_content),
