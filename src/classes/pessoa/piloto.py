@@ -1,5 +1,11 @@
+import pandas as pd
 from .pessoa import Pessoa
 from ..enums.enum_tipo_aviao import EnumTipoAviao
+import funcionalidades.arquivos.manipula_arquivos as ManipularArquivos
+
+CAMINHO_PILOTOS = "base_dados/tripulacao/pilotos.json"
+cabecalho = 'Pilotos'
+colunas = ["nome","cpf","tipo_aviao","numero_licenca"]
 
 class Piloto(Pessoa):
     def __init__(self, nome, cpf) -> None:
@@ -13,6 +19,10 @@ class Piloto(Pessoa):
     @property
     def tipo_aviao(self):
         return self.__tipo_aviao
+    
+    @property
+    def str_tipo_aviao(self):
+        return self.__tipo_aviao.value
     
         
     @property
@@ -42,8 +52,22 @@ class Piloto(Pessoa):
 
     def cadastrar(nome, cpf, tipo_aviao: EnumTipoAviao, numero_licenca):
         piloto = Piloto(nome, cpf)
-        print('CHEOU AQUIIIIIIIIIIIIIIIIIIIIIII')
         piloto.tipo_aviao = tipo_aviao
         piloto.numero_licenca = numero_licenca
-        
 
+        df = Piloto.carregarListaPilotos()
+        novo_piloto = pd.DataFrame([
+            {
+                "nome": piloto.nome,
+                "cpf": piloto.cpf,
+                "tipo_aviao": piloto.str_tipo_aviao,
+                "numero_licenca": piloto.numero_licenca
+            }
+        ])
+
+        df = pd.concat([df, novo_piloto], ignore_index=True)
+        ManipularArquivos.salvar_informacoes(df, CAMINHO_PILOTOS, cabecalho)
+    
+    def carregarListaPilotos():
+        lista_pilotos = ManipularArquivos.carregar_informacoes(CAMINHO_PILOTOS, cabecalho, colunas)
+        return lista_pilotos

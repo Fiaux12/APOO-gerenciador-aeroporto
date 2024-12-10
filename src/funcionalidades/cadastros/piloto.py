@@ -37,6 +37,7 @@ def cadastrar_piloto():
 
 
 def dialog():
+    # piloto.Piloto.carregarListaPilotos()
     dlg = ft.AlertDialog(
         title= pilotos(), on_dismiss=lambda e: print("Dialog dismissed!")
     )
