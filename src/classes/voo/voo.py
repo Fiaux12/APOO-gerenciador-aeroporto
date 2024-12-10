@@ -1,6 +1,5 @@
 from tripulacao import Tripulacao
 from aviao import Aviao
-from pista import Pista
 from local import Local
 import math
 
