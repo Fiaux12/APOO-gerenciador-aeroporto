@@ -1,7 +1,7 @@
 import pandas as pd
 import funcionalidades.arquivos.manipula_arquivos as ManipularArquivos
 
-CAMINHO_AVIOES = "base_dados/tripulacao/avioes.json"
+CAMINHO_AVIOES = "base_dados/voo/avioes.json"
 cabecalho = 'Avioes'
 colunas = ["capacidade_maxima","velocidade_maxima","qtd_motores","modelo", "consumo", "peso_maximo", "numero_serie", "tipo"]
 
