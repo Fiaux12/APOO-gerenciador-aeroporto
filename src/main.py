@@ -1,6 +1,7 @@
 import flet as ft
 import funcionalidades.cadastros.piloto  as piloto
 import funcionalidades.cadastros.comissarios  as comissarios
+import funcionalidades.tripulacao.tripulacao  as tripulacao
 import funcionalidades.cadastros.aviao  as aviao
 import funcionalidades.home  as home
 
@@ -27,6 +28,7 @@ def update_content(index, body_content):
 
     elif index == 3:  
         body_content.controls.append(ft.Text("Criar Tripulação", size=20))
+        body_content.controls.append(tripulacao.criar_tripulacao())
 
     elif index == 4: 
         body_content.controls.append(ft.Text("Aviões", size=20))

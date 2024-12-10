@@ -23,7 +23,6 @@ class Piloto(Pessoa):
     @property
     def str_tipo_aviao(self):
         return self.__tipo_aviao.value
-    
         
     @property
     def numero_licenca(self):
