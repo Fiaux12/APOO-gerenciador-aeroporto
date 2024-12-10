@@ -1,8 +1,8 @@
 
 class Coordenadas():
     def __init__(self, latitude:int, longitude: int) -> None:
-        self.__latitude = latitude
-        self.__longitude = longitude
+        self.__latitude = None
+        self.__longitude = None
 
    #--------------GET--------------
 
