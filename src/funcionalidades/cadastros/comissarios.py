@@ -1,71 +1,64 @@
 import flet as ft
+import classes.pessoa.comissario_de_voo  as comissario
+
 
 def cadastrar_comissario():
     def button_clicked(e):
-        t.value = f"Textboxes values are: '{nome.value}', '{cpf.value}', '{portugues.value}'."
+        
+        linguas_selecionadas = [lingua.label for lingua in lista_linguas if lingua.value]
+        comissario.ComissarioDeVoo.cadastrar(nome.value, cpf.value, linguas_selecionadas, certificado.value)
+
+        t.value = f"Nome: {nome.value}, CPF: {cpf.value}, Línguas: {', '.join(linguas_selecionadas)}."
         t.update()
 
-    # TODO: implementar regras para inserir dados
     t = ft.Text()
     nome = ft.TextField(label="Nome", width=500)
     cpf = ft.TextField(label="CPF", width=500)
     certificado = ft.TextField(label="Número do Certificado", width=500)
 
-    tipo_aviao = ft.Text("Línguas faladas", size=15)
-    portugues = ft.Checkbox(label="Português")
-    ingues = ft.Checkbox(label="Inglês")
-    alemao = ft.Checkbox(label="Alemão")
-    russo = ft.Checkbox(label="Russo")
-    chines = ft.Checkbox(label="Chinês")
-    japones = ft.Checkbox(label="Japonês")
-    frances = ft.Checkbox(label="Francês")
-    italiano = ft.Checkbox(label="Italiano")
-
-
+    texto_linguas = ft.Text("Línguas faladas", size=15)
+    linguas = ['Português', 'Inglês', 'Alemão', 'Russo', 'Chinês', 'Japonês', 'Francês', 'Italiano']
+    lista_linguas = [ft.Checkbox(label=lingua) for lingua in linguas]
     cadastrar = ft.ElevatedButton(text="Cadastrar", on_click=button_clicked)
 
-    return ft.Column(controls=[nome, cpf, certificado, tipo_aviao, portugues, ingues, alemao, russo, chines, japones, frances, italiano, cadastrar, t])
+    return ft.Column(controls=[nome, cpf, certificado, texto_linguas] + lista_linguas + [cadastrar, t])
 
 def dialog():
+    def carregar_lista_comissarios():
+        df = comissario.ComissarioDeVoo.carregarListaComissarios()
+
+        rows = []
+        for _, row in df.iterrows():
+            linguas_str = ', '.join(row["linguas"]) 
+            rows.append([row["nome"], row["cpf"], linguas_str, row["numero_certificado"]])
+        
+        return rows
+
+    rows = carregar_lista_comissarios()
     dlg = ft.AlertDialog(
-        title= comissarios(), on_dismiss=lambda e: print("Dialog dismissed!")
+        title=comissarios(rows), on_dismiss=lambda e: print("Dialog dismissed!")
     )
 
     def open_dlg(e):
+        rows = carregar_lista_comissarios()
+        dlg.title = comissarios(rows) 
         e.control.page.overlay.append(dlg)
         dlg.open = True
         e.control.page.update()
 
     return ft.Column(
         [
-            ft.ElevatedButton("Visualizar comissarios", on_click=open_dlg),
+            ft.ElevatedButton("Visualizar Comissarios", on_click=open_dlg),
         ]
     )
 
-def comissarios():
+def comissarios(rows):
     return ft.DataTable(
             columns=[
                 ft.DataColumn(ft.Text("Nome")),
                 ft.DataColumn(ft.Text("CPF")),
-                ft.DataColumn(ft.Text("Gênero")),
-                ft.DataColumn(ft.Text("Licença")),
+                ft.DataColumn(ft.Text("Linguas Faladas")),
+                ft.DataColumn(ft.Text("Certificado")),
             ],
-            rows=[
-                ft.DataRow(
-                    cells=[
-                        ft.DataCell(ft.Text("João Ribeiro")),
-                        ft.DataCell(ft.Text("456.789.321-85")),
-                        ft.DataCell(ft.Text("Masculino")),
-                        ft.DataCell(ft.Text("Carga")),
-                    ]
-                ),
-                ft.DataRow(
-                    cells=[
-                        ft.DataCell(ft.Text("Clarice Romano")),
-                        ft.DataCell(ft.Text("782.663.751-28")),
-                        ft.DataCell(ft.Text("Feminino")),
-                        ft.DataCell(ft.Text("Passageiro")),
-                    ]
-                )
-            ]
+            rows=[ft.DataRow(cells=[ft.DataCell(ft.Text(cell)) for cell in row]) for row in rows],
         )

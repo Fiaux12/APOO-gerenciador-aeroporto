@@ -1,0 +1,52 @@
+{
+    "Pilotos": [
+        {
+            "nome": "Amanda",
+            "cpf": 100,
+            "tipo_aviao": "CARGA",
+            "numero_licenca": 789654
+        },
+        {
+            "nome": "Julia Alves",
+            "cpf": 54,
+            "tipo_aviao": "PASSAGEIRO",
+            "numero_licenca": 659814
+        },
+        {
+            "nome": "Erick",
+            "cpf": "46987",
+            "tipo_aviao": "CARGA",
+            "numero_licenca": "4444"
+        },
+        {
+            "nome": "Vitoria",
+            "cpf": "456987",
+            "tipo_aviao": "CARGA",
+            "numero_licenca": "2222"
+        },
+        {
+            "nome": "Carlos",
+            "cpf": "64515",
+            "tipo_aviao": "PASSAGEIRO",
+            "numero_licenca": "333"
+        },
+        {
+            "nome": "Karou",
+            "cpf": "12365",
+            "tipo_aviao": "PASSAGEIRO",
+            "numero_licenca": "234"
+        },
+        {
+            "nome": "Fernando",
+            "cpf": "588",
+            "tipo_aviao": "PASSAGEIRO",
+            "numero_licenca": "8998"
+        },
+        {
+            "nome": "Jo\u00e3o Fernando",
+            "cpf": "22588",
+            "tipo_aviao": "CARGA",
+            "numero_licenca": "222"
+        }
+    ]
+}

@@ -1,7 +1,35 @@
 import flet as ft
+import classes.aviao.aviao  as aviao
+import classes.aviao.aviao_carga  as aviao_carga_class
+import classes.aviao.aviao_passageiro  as aviao_passageiro_class
+from classes.enums.enum_tipo_aviao import EnumTipoAviao
+
 
 def cadastrar_aviao():
     def button_clicked(e):
+        if aviao_carga.value:
+            aviao_carga_class.AviaoCarga.cadastrar(
+                capacidade_max.value,
+                velocidade_max.value, 
+                qtd_motores.value, 
+                modelo.value, 
+                consumo.value, 
+                peso_maximo.value, 
+                serie.value,
+                EnumTipoAviao.CARGA.value
+            )
+        else:
+            aviao_passageiro_class.AviaoPassageiro.cadastrar(
+                capacidade_max.value,
+                velocidade_max.value, 
+                qtd_motores.value, 
+                modelo.value, 
+                consumo.value, 
+                peso_maximo.value, 
+                serie.value,
+                EnumTipoAviao.PASSAGEIRO.value
+            )
+
         t.value = f"Textboxes values are: '{capacidade_max.value}', '{velocidade_max.value}', '{qtd_motores.value}'."
         t.update()
 
@@ -15,15 +43,14 @@ def cadastrar_aviao():
             aviao_carga.value = False
             aviao_carga.update()
 
-    # TODO: implementar regras para inserir dados
     t = ft.Text()
-    capacidade_max = ft.TextField(label="Capacidade Máxima", width=500)
-    velocidade_max = ft.TextField(label="Valocidade Máxima", width=500)
-    qtd_motores = ft.TextField(label="Número do Motores", width=500)
-    modelo = ft.TextField(label="Modelo", width=500)
-    consumo = ft.TextField(label="Consumo em km/h", width=500)
-    peso_maximo = ft.TextField(label="Peso Máximo", width=500)
     serie = ft.TextField(label="Número de Série", width=500)
+    modelo = ft.TextField(label="Modelo", width=500)
+    capacidade_max = ft.TextField(label="Capacidade Máxima (t)", width=500)
+    velocidade_max = ft.TextField(label="Valocidade Máxima (km/h)", width=500)
+    qtd_motores = ft.TextField(label="Número do Motores", width=500)
+    consumo = ft.TextField(label="Consumo (l/km)", width=500)
+    peso_maximo = ft.TextField(label="Peso Máximo (t)", width=500)
 
     tipo_aviao = ft.Text("Tipo de avião", size=15)
     aviao_carga = ft.Checkbox(label="Carga", on_change=aviao_carga_changed)
@@ -50,45 +77,53 @@ def cadastrar_aviao():
 
 
 def dialog():
+    def carregar_lista_avioes():
+        df = aviao.Aviao.carregarListaAvioes()
+
+        rows = []
+        for _, row in df.iterrows():
+            rows.append([
+                row["numero_serie"],
+                row["modelo"],
+                row["tipo"],
+                row["capacidade_maxima"],
+                row["velocidade_maxima"],
+                row["qtd_motores"],
+                row["consumo"],
+                row["peso_maximo"],
+            ])
+
+        return rows
+
+    rows = carregar_lista_avioes()
     dlg = ft.AlertDialog(
-        title= avioes(), on_dismiss=lambda e: print("Dialog dismissed!")
+        title=avioes(rows), on_dismiss=lambda e: print("Dialog dismissed!")
     )
 
     def open_dlg(e):
+        rows = carregar_lista_avioes()
+        dlg.title = avioes(rows) 
         e.control.page.overlay.append(dlg)
         dlg.open = True
         e.control.page.update()
 
     return ft.Column(
         [
-            ft.ElevatedButton("Visualizar Pilotos", on_click=open_dlg),
+            ft.ElevatedButton("Visualizar Aviões", on_click=open_dlg),
         ]
     )
 
-def avioes():
+def avioes(rows):
     return ft.DataTable(
             columns=[
-                ft.DataColumn(ft.Text("Nome")),
-                ft.DataColumn(ft.Text("CPF")),
-                ft.DataColumn(ft.Text("Gênero")),
-                ft.DataColumn(ft.Text("Licença")),
+                ft.DataColumn(ft.Text("Número de Série")),
+                ft.DataColumn(ft.Text("Modelo")),
+                ft.DataColumn(ft.Text("Tipo")),
+                ft.DataColumn(ft.Text("Capacidade Máxima")),
+                ft.DataColumn(ft.Text("Valocidade Máxima")),
+                ft.DataColumn(ft.Text("Número do Motores")),
+                ft.DataColumn(ft.Text("Consumo em l/km")),
+                ft.DataColumn(ft.Text("Peso Máximo")),
             ],
-            rows=[
-                ft.DataRow(
-                    cells=[
-                        ft.DataCell(ft.Text("João Ribeiro")),
-                        ft.DataCell(ft.Text("456.789.321-85")),
-                        ft.DataCell(ft.Text("Masculino")),
-                        ft.DataCell(ft.Text("Carga")),
-                    ]
-                ),
-                ft.DataRow(
-                    cells=[
-                        ft.DataCell(ft.Text("Clarice Romano")),
-                        ft.DataCell(ft.Text("782.663.751-28")),
-                        ft.DataCell(ft.Text("Feminino")),
-                        ft.DataCell(ft.Text("Passageiro")),
-                    ]
-                )
-            ]
+            rows=[ft.DataRow(cells=[ft.DataCell(ft.Text(cell)) for cell in row]) for row in rows],
         )
