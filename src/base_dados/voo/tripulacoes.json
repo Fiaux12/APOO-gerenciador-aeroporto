@@ -1,0 +1,24 @@
+{
+    "Tripulacoes": [
+        {
+            "comissarios_voo": [
+                "Amanda",
+                "Erick"
+            ],
+            "pilotos": [
+                "Julia Alves",
+                "Carla"
+            ]
+        },
+        {
+            "comissarios_voo": [
+                "Julia Alves",
+                "Karou"
+            ],
+            "pilotos": [
+                "Georgia",
+                "Carla"
+            ]
+        }
+    ]
+}

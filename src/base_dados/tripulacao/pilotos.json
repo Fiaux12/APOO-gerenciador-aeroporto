@@ -47,30 +47,6 @@
             "cpf": "22588",
             "tipo_aviao": "CARGA",
             "numero_licenca": "222"
-        },
-        {
-            "nome": "Carlos",
-            "cpf": "64515",
-            "tipo_aviao": "PASSAGEIRO",
-            "numero_licenca": "333"
-        },
-        {
-            "nome": "Karou",
-            "cpf": "12365",
-            "tipo_aviao": "PASSAGEIRO",
-            "numero_licenca": "234"
-        },
-        {
-            "nome": "Fernando",
-            "cpf": "588",
-            "tipo_aviao": "PASSAGEIRO",
-            "numero_licenca": "8998"
-        },
-        {
-            "nome": "Jo\u00e3o Fernando",
-            "cpf": "22588",
-            "tipo_aviao": "CARGA",
-            "numero_licenca": "222"
         }
     ]
 }

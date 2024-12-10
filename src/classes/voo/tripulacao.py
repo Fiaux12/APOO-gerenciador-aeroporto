@@ -1,3 +1,10 @@
+import pandas as pd
+import funcionalidades.arquivos.manipula_arquivos as ManipularArquivos
+
+CAMINHO_TRIPULACAO = "base_dados/voo/tripulacoes.json"
+cabecalho = 'Tripulacoes'
+colunas = ["comissarios_voo","pilotos"]
+
 
 class Tripulacao():
     def __init__(self) -> None:
@@ -33,3 +40,17 @@ class Tripulacao():
         tripulacao.pilotos = lista_pilotos
         tripulacao.comissarios_voo = comissarios
 
+        df = Tripulacao.carregarListaTripulacao()
+        nova_tripulacao = pd.DataFrame([
+            {
+                "comissarios_voo": tripulacao.pilotos,
+                "pilotos": tripulacao.comissarios_voo,
+            }
+        ])
+
+        df = pd.concat([df, nova_tripulacao], ignore_index=True)
+        ManipularArquivos.salvar_informacoes(df, CAMINHO_TRIPULACAO, cabecalho)
+    
+    def carregarListaTripulacao():
+        lista_pilotos = ManipularArquivos.carregar_informacoes(CAMINHO_TRIPULACAO, cabecalho, colunas)
+        return lista_pilotos
