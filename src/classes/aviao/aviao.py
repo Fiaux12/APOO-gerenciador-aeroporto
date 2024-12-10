@@ -1,4 +1,5 @@
 import pandas as pd
+from ..enums.enum_tipo_aviao import EnumTipoAviao
 from funcionalidades.arquivos.manipula_arquivos import ManipulaArquivos
 
 CAMINHO_AVIOES = "base_dados/voo/avioes.json"
@@ -7,14 +8,14 @@ colunas = ["capacidade_maxima","velocidade_maxima","qtd_motores","modelo", "cons
 
 class Aviao():
     def __init__(self) -> None:
-        self._capacidade_maxima = 0
-        self._velocidade_maxima = 0
-        self._qtd_motores = 0
+        self._capacidade_maxima = None
+        self._velocidade_maxima = None
+        self._qtd_motores = None
         self._modelo = None
-        self._consumo = 0 
-        self._peso_maximo = 0
-        self._numero_serie = 0
-        self.tipo = None
+        self._consumo = None
+        self._peso_maximo = None
+        self._numero_serie = None
+        self._tipo = None
     
     #--------------GET--------------
 
@@ -45,6 +46,10 @@ class Aviao():
     @property
     def numero_serie(self):
         return self._numero_serie
+    
+    @property
+    def tipo(self):
+        return self._tipo
 
     #--------------SET--------------
 
@@ -93,6 +98,13 @@ class Aviao():
             self._numero_serie = valor
         else:
             raise ValueError("Número de série inválido!")
+        
+    @tipo.setter
+    def tipo(self, valor):
+        if valor in (EnumTipoAviao.CARGA, EnumTipoAviao.PASSAGEIRO):  
+            self._tipo = valor
+        else:
+            raise ValueError("Tipo de avião inválido!")
         
     #--------------PRIVATE--------------
 
