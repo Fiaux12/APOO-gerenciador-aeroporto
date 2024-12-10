@@ -1,0 +1,24 @@
+{
+    "Avioes": [
+        {
+            "capacidade_maxima": "5000",
+            "velocidade_maxima": "910",
+            "qtd_motores": "5",
+            "modelo": "EMB 145 AEW&C",
+            "consumo": "800",
+            "peso_maximo": "700",
+            "numero_serie": "7789",
+            "tipo": "CARGA"
+        },
+        {
+            "capacidade_maxima": "347",
+            "velocidade_maxima": "850",
+            "qtd_motores": "3",
+            "modelo": "ERJ 145XR",
+            "consumo": "200",
+            "peso_maximo": "300",
+            "numero_serie": "7784",
+            "tipo": "PASSAGEIRO"
+        }
+    ]
+}

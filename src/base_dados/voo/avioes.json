@@ -1,0 +1,14 @@
+{
+    "Avioes": [
+        {
+            "capacidade_maxima": "Carla",
+            "velocidade_maxima": 100,
+            "qtd_motores": 2,
+            "modelo": 789654,
+            "consumo": 789654,
+            "peso_maximo": 789654,
+            "numero_serie": 789654,
+            "tipo": "aa"
+        }
+    ]
+}
