@@ -21,7 +21,6 @@ def cadastrar_piloto():
             aviao_carga.value = False
             aviao_carga.update()
 
-    # TODO: implementar regras para inserir dados
     t = ft.Text()
     nome = ft.TextField(label="Nome", width=500)
     cpf = ft.TextField(label="CPF", width=500)
@@ -37,9 +36,14 @@ def cadastrar_piloto():
 
 
 def dialog():
-    # piloto.Piloto.carregarListaPilotos()
+    df = piloto.Piloto.carregarListaPilotos()
+
+    rows = []
+    for _, row in df.iterrows():
+        rows.append([row["nome"], row["cpf"], row["tipo_aviao"], row["numero_licenca"]])
+
     dlg = ft.AlertDialog(
-        title= pilotos(), on_dismiss=lambda e: print("Dialog dismissed!")
+        title= pilotos(rows), on_dismiss=lambda e: print("Dialog dismissed!")
     )
 
     def open_dlg(e):
@@ -53,30 +57,13 @@ def dialog():
         ]
     )
 
-def pilotos():
+def pilotos(rows):
     return ft.DataTable(
             columns=[
                 ft.DataColumn(ft.Text("Nome")),
                 ft.DataColumn(ft.Text("CPF")),
-                ft.DataColumn(ft.Text("Gênero")),
+                ft.DataColumn(ft.Text("Tipo Avião")),
                 ft.DataColumn(ft.Text("Licença")),
             ],
-            rows=[
-                ft.DataRow(
-                    cells=[
-                        ft.DataCell(ft.Text("João Ribeiro")),
-                        ft.DataCell(ft.Text("456.789.321-85")),
-                        ft.DataCell(ft.Text("Masculino")),
-                        ft.DataCell(ft.Text("Carga")),
-                    ]
-                ),
-                ft.DataRow(
-                    cells=[
-                        ft.DataCell(ft.Text("Clarice Romano")),
-                        ft.DataCell(ft.Text("782.663.751-28")),
-                        ft.DataCell(ft.Text("Feminino")),
-                        ft.DataCell(ft.Text("Passageiro")),
-                    ]
-                )
-            ]
+            rows=[ft.DataRow(cells=[ft.DataCell(ft.Text(cell)) for cell in row]) for row in rows],
         )

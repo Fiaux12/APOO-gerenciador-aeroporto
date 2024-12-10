@@ -71,3 +71,4 @@ class Piloto(Pessoa):
     def carregarListaPilotos():
         lista_pilotos = ManipularArquivos.carregar_informacoes(CAMINHO_PILOTOS, cabecalho, colunas)
         return lista_pilotos
+    
