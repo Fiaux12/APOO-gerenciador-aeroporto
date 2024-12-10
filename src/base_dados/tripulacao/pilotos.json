@@ -1,0 +1,22 @@
+{
+    "Pilotos": [
+        {
+            "nome": "Amanda",
+            "cpf": 100,
+            "tipo_aviao": "CARGA",
+            "numero_licenca": 789654
+        },
+        {
+            "nome": "Julia Alves",
+            "cpf": 54,
+            "tipo_aviao": "PASAGEIRO",
+            "numero_licenca": 659814
+        },
+        {
+            "nome": "Erick",
+            "cpf": "46987",
+            "tipo_aviao": "CARGA",
+            "numero_licenca": "4444"
+        }
+    ]
+}
