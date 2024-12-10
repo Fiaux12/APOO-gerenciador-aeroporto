@@ -1,8 +1,14 @@
 import flet as ft
+import classes.pessoa.piloto  as piloto
+from classes.enums.enum_tipo_aviao import EnumTipoAviao
+
 
 def cadastrar_piloto():
     def button_clicked(e):
-        t.value = f"Textboxes values are: '{nome.value}', '{cpf.value}', '{licenca.value}', '{aviao_carga.value}','{aviao_passageiro.value}'."
+        tipo_aviao = EnumTipoAviao.CARGA if aviao_carga.value else EnumTipoAviao.PASSAGEIRO
+        piloto.Piloto.cadastrar(nome.value, cpf.value, tipo_aviao, licenca.value)
+
+        t.value = f"Textboxes values are: '{nome.value}', '{cpf.value}', '{licenca.value}', '{aviao_carga.value}','{aviao_passageiro.value}', '{aviao_carga.value}'."
         t.update()
     
     def aviao_carga_changed(e):
@@ -21,13 +27,13 @@ def cadastrar_piloto():
     cpf = ft.TextField(label="CPF", width=500)
     licenca = ft.TextField(label="Número da Licença", width=500)
 
-    tipo_aviao = ft.Text("Tipo de avião pilotado", size=15)
+    texto_tipo_aviao = ft.Text("Tipo de avião pilotado", size=15)
     aviao_carga = ft.Checkbox(label="Carga", on_change=aviao_carga_changed)
     aviao_passageiro = ft.Checkbox(label="Passageiro", on_change=aviao_passageiro_changed)
 
     cadastrar = ft.ElevatedButton(text="Cadastrar", on_click=button_clicked)
 
-    return ft.Column(controls=[nome, cpf, licenca, tipo_aviao, aviao_carga, aviao_passageiro, cadastrar, t])
+    return ft.Column(controls=[nome, cpf, licenca, texto_tipo_aviao, aviao_carga, aviao_passageiro, cadastrar, t])
 
 
 def dialog():
