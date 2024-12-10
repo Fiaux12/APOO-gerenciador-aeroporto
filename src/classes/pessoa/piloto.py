@@ -1,7 +1,7 @@
 import pandas as pd
 from .pessoa import Pessoa
 from ..enums.enum_tipo_aviao import EnumTipoAviao
-import funcionalidades.arquivos.manipula_arquivos as ManipularArquivos
+from funcionalidades.arquivos.manipula_arquivos import ManipulaArquivos
 
 CAMINHO_PILOTOS = "base_dados/tripulacao/pilotos.json"
 cabecalho = 'Pilotos'
@@ -65,9 +65,9 @@ class Piloto(Pessoa):
         ])
 
         df = pd.concat([df, novo_piloto], ignore_index=True)
-        ManipularArquivos.salvar_informacoes(df, CAMINHO_PILOTOS, cabecalho)
+        ManipulaArquivos.salvar_informacoes(df, CAMINHO_PILOTOS, cabecalho)
     
     def carregarListaPilotos():
-        lista_pilotos = ManipularArquivos.carregar_informacoes(CAMINHO_PILOTOS, cabecalho, colunas)
+        lista_pilotos = ManipulaArquivos.carregar_informacoes(CAMINHO_PILOTOS, cabecalho, colunas)
         return lista_pilotos
     

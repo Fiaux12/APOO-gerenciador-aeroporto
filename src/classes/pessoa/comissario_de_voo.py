@@ -1,6 +1,6 @@
 import pandas as pd
 from .pessoa import Pessoa
-import funcionalidades.arquivos.manipula_arquivos as ManipularArquivos
+from funcionalidades.arquivos.manipula_arquivos import ManipulaArquivos
 
 CAMINHO_COMISSARIOS = "base_dados/tripulacao/comissarios.json"
 cabecalho = 'Comissarios'
@@ -61,9 +61,9 @@ class ComissarioDeVoo(Pessoa):
         ])
 
         df = pd.concat([df, novo_comissario], ignore_index=True)
-        ManipularArquivos.salvar_informacoes(df, CAMINHO_COMISSARIOS, cabecalho)
+        ManipulaArquivos.salvar_informacoes(df, CAMINHO_COMISSARIOS, cabecalho)
     
     def carregarListaComissarios():
-        lista_comissarios = ManipularArquivos.carregar_informacoes(CAMINHO_COMISSARIOS, cabecalho, colunas)
+        lista_comissarios = ManipulaArquivos.carregar_informacoes(CAMINHO_COMISSARIOS, cabecalho, colunas)
         return lista_comissarios
     

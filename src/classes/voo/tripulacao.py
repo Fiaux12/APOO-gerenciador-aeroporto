@@ -1,5 +1,5 @@
 import pandas as pd
-import funcionalidades.arquivos.manipula_arquivos as ManipularArquivos
+from funcionalidades.arquivos.manipula_arquivos import ManipulaArquivos
 
 CAMINHO_TRIPULACAO = "base_dados/voo/tripulacoes.json"
 cabecalho = 'Tripulacoes'
@@ -49,8 +49,8 @@ class Tripulacao():
         ])
 
         df = pd.concat([df, nova_tripulacao], ignore_index=True)
-        ManipularArquivos.salvar_informacoes(df, CAMINHO_TRIPULACAO, cabecalho)
+        ManipulaArquivos.salvar_informacoes(df, CAMINHO_TRIPULACAO, cabecalho)
     
     def carregarListaTripulacao():
-        lista_tripulacoes = ManipularArquivos.carregar_informacoes(CAMINHO_TRIPULACAO, cabecalho, colunas)
+        lista_tripulacoes = ManipulaArquivos.carregar_informacoes(CAMINHO_TRIPULACAO, cabecalho, colunas)
         return lista_tripulacoes

@@ -1,5 +1,5 @@
 import pandas as pd
-import funcionalidades.arquivos.manipula_arquivos as ManipularArquivos
+from funcionalidades.arquivos.manipula_arquivos import ManipulaArquivos
 
 CAMINHO_AVIOES = "base_dados/voo/avioes.json"
 cabecalho = 'Avioes'
@@ -125,9 +125,9 @@ class Aviao():
         ])
 
         df = pd.concat([df, novo_aviao], ignore_index=True)
-        ManipularArquivos.salvar_informacoes(df, CAMINHO_AVIOES, cabecalho)
+        ManipulaArquivos.salvar_informacoes(df, CAMINHO_AVIOES, cabecalho)
     
     def carregarListaAvioes():
-        lista_avioes = ManipularArquivos.carregar_informacoes(CAMINHO_AVIOES, cabecalho, colunas)
+        lista_avioes = ManipulaArquivos.carregar_informacoes(CAMINHO_AVIOES, cabecalho, colunas)
         return lista_avioes
     
