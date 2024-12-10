@@ -19,6 +19,19 @@
                 "Georgia",
                 "Carla"
             ]
+        },
+        {
+            "comissarios_voo": [
+                "Carla",
+                "Julia Alves",
+                "Erick",
+                "Georgia",
+                "Georgia"
+            ],
+            "pilotos": [
+                "Karou",
+                "aa"
+            ]
         }
     ]
 }

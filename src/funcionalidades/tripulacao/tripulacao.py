@@ -68,3 +68,41 @@ def criar_tripulacao():
         t
     ])
 
+def dialog():
+    def carregar_lista_tripulacoes():
+        df = tripulacao.Tripulacao.carregarListaTripulacao()
+
+        rows = []
+        for _, row in df.iterrows():
+            comissarios = ', '.join(row["comissarios_voo"]) 
+            pilotos = ', '.join(row["pilotos"]) 
+            rows.append([comissarios, pilotos])
+
+        return rows
+
+    rows = carregar_lista_tripulacoes()
+    dlg = ft.AlertDialog(
+        title=tripulacoesTable(rows), on_dismiss=lambda e: print("Dialog dismissed!")
+    )
+
+    def open_dlg(e):
+        rows = carregar_lista_tripulacoes()
+        dlg.title = tripulacoesTable(rows) 
+        e.control.page.overlay.append(dlg)
+        dlg.open = True
+        e.control.page.update()
+
+    return ft.Column(
+        [
+            ft.ElevatedButton("Visualizar Tripulações", on_click=open_dlg),
+        ]
+    )
+
+def tripulacoesTable(rows):
+    return ft.DataTable(
+        columns=[
+            ft.DataColumn(ft.Text("Comissarios")),
+            ft.DataColumn(ft.Text("Pilotos")),
+        ],
+        rows=[ft.DataRow(cells=[ft.DataCell(ft.Text(cell)) for cell in row]) for row in rows],
+    )

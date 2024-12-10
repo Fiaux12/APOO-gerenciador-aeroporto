@@ -54,11 +54,11 @@ def dialog():
 
 def comissarios(rows):
     return ft.DataTable(
-            columns=[
-                ft.DataColumn(ft.Text("Nome")),
-                ft.DataColumn(ft.Text("CPF")),
-                ft.DataColumn(ft.Text("Linguas Faladas")),
-                ft.DataColumn(ft.Text("Certificado")),
-            ],
-            rows=[ft.DataRow(cells=[ft.DataCell(ft.Text(cell)) for cell in row]) for row in rows],
-        )
+        columns=[
+            ft.DataColumn(ft.Text("Nome")),
+            ft.DataColumn(ft.Text("CPF")),
+            ft.DataColumn(ft.Text("Linguas Faladas")),
+            ft.DataColumn(ft.Text("Certificado")),
+        ],
+        rows=[ft.DataRow(cells=[ft.DataCell(ft.Text(cell)) for cell in row]) for row in rows],
+    )

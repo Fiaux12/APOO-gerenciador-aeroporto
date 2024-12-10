@@ -27,7 +27,9 @@ def update_content(index, body_content):
         body_content.controls.append(comissarios.cadastrar_comissario())
 
     elif index == 3:  
-        body_content.controls.append(ft.Text("Criar Tripulação", size=20))
+        body_content.controls.append(ft.Text("Tripulação", size=20))
+        body_content.controls.append(tripulacao.dialog())
+        body_content.controls.append(ft.Divider())
         body_content.controls.append(tripulacao.criar_tripulacao())
 
     elif index == 4: 
