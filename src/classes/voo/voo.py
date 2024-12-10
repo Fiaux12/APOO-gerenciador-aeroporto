@@ -5,10 +5,9 @@ from local import Local
 import math
 
 class Voo():
-    def __init__(self, tripulacao:Tripulacao, aviao: Aviao, pista: Pista, origem: Local, destino: Local) -> None:
+    def __init__(self, tripulacao:Tripulacao, aviao: Aviao, origem: Local, destino: Local) -> None:
         self.__tripulacao = tripulacao
         self.__aviao = aviao
-        self.__pista = pista
         self.__origem = origem
         self.__destino = destino
         self.__duracao_estimada = 0
