@@ -50,6 +50,10 @@ class Aviao():
     @property
     def tipo(self):
         return self._tipo
+    
+    @property
+    def str_tipo(self):
+        return self._tipo.value
 
     #--------------SET--------------
 
@@ -127,7 +131,7 @@ class Aviao():
             {
                 "numero_serie": aviao.numero_serie,
                 "modelo": aviao.modelo,
-                "tipo": aviao.tipo,
+                "tipo": aviao.str_tipo,
                 "capacidade_maxima": aviao.capacidade_maxima,
                 "velocidade_maxima": aviao.velocidade_maxima,
                 "qtd_motores": aviao.qtd_motores,

@@ -16,7 +16,7 @@ def cadastrar_aviao():
                 consumo.value, 
                 peso_maximo.value, 
                 serie.value,
-                EnumTipoAviao.CARGA.value
+                EnumTipoAviao.CARGA
             )
         else:
             aviao_passageiro_class.AviaoPassageiro.cadastrar(
@@ -27,7 +27,7 @@ def cadastrar_aviao():
                 consumo.value, 
                 peso_maximo.value, 
                 serie.value,
-                EnumTipoAviao.PASSAGEIRO.value
+                EnumTipoAviao.PASSAGEIRO
             )
 
         t.value = f"Textboxes values are: '{capacidade_max.value}', '{velocidade_max.value}', '{qtd_motores.value}'."

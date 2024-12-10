@@ -19,6 +19,16 @@
             "peso_maximo": "300",
             "numero_serie": "7784",
             "tipo": "PASSAGEIRO"
+        },
+        {
+            "capacidade_maxima": "233",
+            "velocidade_maxima": "32",
+            "qtd_motores": "12",
+            "modelo": "dd",
+            "consumo": "21",
+            "peso_maximo": "32",
+            "numero_serie": "12",
+            "tipo": "CARGA"
         }
     ]
 }
