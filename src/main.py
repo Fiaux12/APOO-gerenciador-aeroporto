@@ -1,7 +1,7 @@
 import flet as ft
 import funcionalidades.cadastros.piloto  as piloto
 import funcionalidades.cadastros.comissarios  as comissarios
-import funcionalidades.tripulacao.tripulacao  as tripulacao
+import funcionalidades.cadastros.tripulacao  as tripulacao
 import funcionalidades.cadastros.aviao  as aviao
 import funcionalidades.home  as home
 
