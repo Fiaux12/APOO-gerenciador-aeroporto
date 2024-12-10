@@ -36,17 +36,23 @@ def cadastrar_piloto():
 
 
 def dialog():
-    df = piloto.Piloto.carregarListaPilotos()
+    def carregar_lista_pilotos():
+        df = piloto.Piloto.carregarListaPilotos()
 
-    rows = []
-    for _, row in df.iterrows():
-        rows.append([row["nome"], row["cpf"], row["tipo_aviao"], row["numero_licenca"]])
+        rows = []
+        for _, row in df.iterrows():
+            rows.append([row["nome"], row["cpf"], row["tipo_aviao"], row["numero_licenca"]])
 
+        return rows
+
+    rows = carregar_lista_pilotos()
     dlg = ft.AlertDialog(
-        title= pilotos(rows), on_dismiss=lambda e: print("Dialog dismissed!")
+        title=pilotos(rows), on_dismiss=lambda e: print("Dialog dismissed!")
     )
 
     def open_dlg(e):
+        rows = carregar_lista_pilotos()
+        dlg.title = pilotos(rows) 
         e.control.page.overlay.append(dlg)
         dlg.open = True
         e.control.page.update()
