@@ -4,12 +4,58 @@ from .local import Local
 import math
 
 class Voo():
-    def __init__(self, tripulacao:Tripulacao, aviao: Aviao, origem: Local, destino: Local) -> None:
-        self.__tripulacao = tripulacao
-        self.__aviao = aviao
-        self.__origem = origem
-        self.__destino = destino
-        self.__duracao_estimada = 0
+    def __init__(self) -> None:
+        self.__tripulacao = None    #Do tipo Tripulacao
+        self.__aviao = None         #Do tipo Aviao
+        self.__origem = None        #Do tipo Local
+        self.__destino = None       #Do tipo Local
+        self.__duracao_estimada = self.calcula_duracao()#Do tipo decimal
+
+   #--------------GET--------------
+
+    @property
+    def tripulacao(self):
+        return self.__tripulacao
+    
+    @property
+    def aviao(self):
+        return self.__aviao
+    
+    @property
+    def origem(self):
+        return self.__origem
+    
+    @property
+    def destino(self):
+        return self.__destino
+    
+    @property
+    def duracao_estimada(self):
+        return self.__duracao_estimada
+    
+        #--------------SET--------------
+
+    @tripulacao.setter
+    def tripulacao(self, valor):
+        self.__tripulacao = valor
+    
+    @aviao.setter
+    def aviao(self, valor):
+        self.__aviao = valor
+
+    @origem.setter
+    def origem(self, valor):
+        if not isinstance(valor, Local):
+            raise ValueError("Local de origem inválido.")
+        self.__origem = valor
+
+    @destino.setter
+    def destino(self, valor):
+        if not isinstance(valor, Local):
+            raise ValueError("Local de destino inválido.")
+        self.__destino = valor
+            
+    #--------------PUBLIC---------------
 
     def calcula_duracao(self):
         # Formula de Haversine:
@@ -23,3 +69,6 @@ class Voo():
         distancia = 2 * raio_terra * math.asin(math.sqrt(aux1))
 
         self.duracao_estimada =  distancia / self.aviao.velocidade_maxima
+
+    def cadastrar_voo():
+        pass
