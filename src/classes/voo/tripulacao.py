@@ -3,13 +3,16 @@ from modulos.manipula_arquivos import ManipulaArquivos
 
 CAMINHO_TRIPULACAO = "base_dados/voo/tripulacoes.json"
 cabecalho = 'Tripulacoes'
-colunas = ["comissarios_voo","pilotos"]
+colunas = ["id","comissarios_voo","pilotos"]
 
+_proximo_id = 1
 
 class Tripulacao():
     def __init__(self) -> None:
         self.__comissarios_voo = None
         self.__pilotos = None  
+        self.__id = Tripulacao._proximo_id  
+        Tripulacao._proximo_id += 1 
 
     #--------------GET--------------
 
@@ -20,6 +23,10 @@ class Tripulacao():
     @property
     def pilotos(self):
         return self.__pilotos
+        
+    @property
+    def id(self):
+        return self.__id
     
     #--------------SET--------------
 
@@ -43,6 +50,7 @@ class Tripulacao():
         df = Tripulacao.carregarListaTripulacao()
         nova_tripulacao = pd.DataFrame([
             {
+                "id": tripulacao.id,
                 "comissarios_voo": tripulacao.comissarios_voo,
                 "pilotos": tripulacao.pilotos,
             }

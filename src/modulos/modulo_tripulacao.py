@@ -79,7 +79,7 @@ class ModuloTripulacao():
             for _, row in df.iterrows():
                 comissarios = ', '.join(row["comissarios_voo"]) 
                 pilotos = ', '.join(row["pilotos"]) 
-                rows.append([comissarios, pilotos])
+                rows.append([row["id"],comissarios, pilotos])
 
             return rows
 
@@ -104,6 +104,7 @@ class ModuloTripulacao():
     def tripulacoesTable(rows):
         return ft.DataTable(
             columns=[
+                ft.DataColumn(ft.Text("Identificação")),
                 ft.DataColumn(ft.Text("Comissarios")),
                 ft.DataColumn(ft.Text("Pilotos")),
             ],
