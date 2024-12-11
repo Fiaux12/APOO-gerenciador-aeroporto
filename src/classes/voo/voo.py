@@ -1,6 +1,6 @@
-from tripulacao import Tripulacao
-from aviao import Aviao
-from local import Local
+from classes.voo.tripulacao import Tripulacao
+from classes.aviao.aviao import Aviao
+from .local import Local
 import math
 
 class Voo():

@@ -1,4 +1,4 @@
-from coordenadas import Coordenadas
+from classes.voo.coordenadas import Coordenadas
 
 # Define, tanto o local de partida, quanto o local de destino
 class Local():
