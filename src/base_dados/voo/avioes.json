@@ -29,6 +29,16 @@
             "peso_maximo": "32",
             "numero_serie": "12",
             "tipo": "CARGA"
+        },
+        {
+            "capacidade_maxima": "54",
+            "velocidade_maxima": "32",
+            "qtd_motores": "6554",
+            "modelo": "EMB9984",
+            "consumo": "6543",
+            "peso_maximo": "32",
+            "numero_serie": "534",
+            "tipo": "CARGA"
         }
     ]
 }

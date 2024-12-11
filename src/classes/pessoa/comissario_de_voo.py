@@ -1,6 +1,6 @@
 import pandas as pd
 from .pessoa import Pessoa
-from funcionalidades.arquivos.manipula_arquivos import ManipulaArquivos
+from modulos.manipula_arquivos import ManipulaArquivos
 
 CAMINHO_COMISSARIOS = "base_dados/tripulacao/comissarios.json"
 cabecalho = 'Comissarios'

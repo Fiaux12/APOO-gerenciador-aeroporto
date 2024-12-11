@@ -1,7 +1,7 @@
 import pandas as pd
 from .pessoa import Pessoa
 from ..enums.enum_tipo_aviao import EnumTipoAviao
-from funcionalidades.arquivos.manipula_arquivos import ManipulaArquivos
+from modulos.manipula_arquivos import ManipulaArquivos
 
 CAMINHO_PILOTOS = "base_dados/tripulacao/pilotos.json"
 cabecalho = 'Pilotos'

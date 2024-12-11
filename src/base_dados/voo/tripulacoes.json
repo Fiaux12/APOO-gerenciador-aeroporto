@@ -50,6 +50,17 @@
                 "Julia Alves",
                 "Fernando"
             ]
+        },
+        {
+            "comissarios_voo": [
+                "Julia Alves",
+                "Ana Maria",
+                "Julia Alves"
+            ],
+            "pilotos": [
+                "Vitoria",
+                "Glaucus"
+            ]
         }
     ]
 }

@@ -53,6 +53,12 @@
             "cpf": "2234",
             "tipo_aviao": "PASSAGEIRO",
             "numero_licenca": "2"
+        },
+        {
+            "nome": "Glaucus",
+            "cpf": "456987",
+            "tipo_aviao": "PASSAGEIRO",
+            "numero_licenca": "45878"
         }
     ]
 }

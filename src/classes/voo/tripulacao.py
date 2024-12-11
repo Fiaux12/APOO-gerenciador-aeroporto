@@ -1,5 +1,5 @@
 import pandas as pd
-from funcionalidades.arquivos.manipula_arquivos import ManipulaArquivos
+from modulos.manipula_arquivos import ManipulaArquivos
 
 CAMINHO_TRIPULACAO = "base_dados/voo/tripulacoes.json"
 cabecalho = 'Tripulacoes'
