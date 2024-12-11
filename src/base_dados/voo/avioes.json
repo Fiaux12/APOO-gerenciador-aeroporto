@@ -1,14 +1,44 @@
 {
     "Avioes": [
         {
-            "capacidade_maxima": "Carla",
-            "velocidade_maxima": 100,
-            "qtd_motores": 2,
-            "modelo": 789654,
-            "consumo": 789654,
-            "peso_maximo": 789654,
-            "numero_serie": 789654,
-            "tipo": "aa"
+            "capacidade_maxima": "5000",
+            "velocidade_maxima": "910",
+            "qtd_motores": "5",
+            "modelo": "EMB 145 AEW&C",
+            "consumo": "800",
+            "peso_maximo": "700",
+            "numero_serie": "7789",
+            "tipo": "CARGA"
+        },
+        {
+            "capacidade_maxima": "347",
+            "velocidade_maxima": "850",
+            "qtd_motores": "3",
+            "modelo": "ERJ 145XR",
+            "consumo": "200",
+            "peso_maximo": "300",
+            "numero_serie": "7784",
+            "tipo": "PASSAGEIRO"
+        },
+        {
+            "capacidade_maxima": "233",
+            "velocidade_maxima": "32",
+            "qtd_motores": "12",
+            "modelo": "dd",
+            "consumo": "21",
+            "peso_maximo": "32",
+            "numero_serie": "12",
+            "tipo": "CARGA"
+        },
+        {
+            "capacidade_maxima": "54",
+            "velocidade_maxima": "32",
+            "qtd_motores": "6554",
+            "modelo": "EMB9984",
+            "consumo": "6543",
+            "peso_maximo": "32",
+            "numero_serie": "534",
+            "tipo": "CARGA"
         }
     ]
 }

@@ -1,20 +1,21 @@
 import pandas as pd
-import funcionalidades.arquivos.manipula_arquivos as ManipularArquivos
+from ..enums.enum_tipo_aviao import EnumTipoAviao
+from modulos.manipula_arquivos import ManipulaArquivos
 
-CAMINHO_AVIOES = "base_dados/tripulacao/avioes.json"
+CAMINHO_AVIOES = "base_dados/voo/avioes.json"
 cabecalho = 'Avioes'
 colunas = ["capacidade_maxima","velocidade_maxima","qtd_motores","modelo", "consumo", "peso_maximo", "numero_serie", "tipo"]
 
 class Aviao():
     def __init__(self) -> None:
-        self._capacidade_maxima = 0
-        self._velocidade_maxima = 0
-        self._qtd_motores = 0
+        self._capacidade_maxima = None
+        self._velocidade_maxima = None
+        self._qtd_motores = None
         self._modelo = None
-        self._consumo = 0 
-        self._peso_maximo = 0
-        self._numero_serie = 0
-        self.tipo = None
+        self._consumo = None
+        self._peso_maximo = None
+        self._numero_serie = None
+        self._tipo = None
     
     #--------------GET--------------
 
@@ -45,6 +46,14 @@ class Aviao():
     @property
     def numero_serie(self):
         return self._numero_serie
+    
+    @property
+    def tipo(self):
+        return self._tipo
+    
+    @property
+    def str_tipo(self):
+        return self._tipo.value
 
     #--------------SET--------------
 
@@ -94,6 +103,13 @@ class Aviao():
         else:
             raise ValueError("Número de série inválido!")
         
+    @tipo.setter
+    def tipo(self, valor):
+        if valor in (EnumTipoAviao.CARGA, EnumTipoAviao.PASSAGEIRO):  
+            self._tipo = valor
+        else:
+            raise ValueError("Tipo de avião inválido!")
+        
     #--------------PRIVATE--------------
 
     #--------------PUBLIC---------------
@@ -115,7 +131,7 @@ class Aviao():
             {
                 "numero_serie": aviao.numero_serie,
                 "modelo": aviao.modelo,
-                "tipo": aviao.tipo,
+                "tipo": aviao.str_tipo,
                 "capacidade_maxima": aviao.capacidade_maxima,
                 "velocidade_maxima": aviao.velocidade_maxima,
                 "qtd_motores": aviao.qtd_motores,
@@ -125,9 +141,9 @@ class Aviao():
         ])
 
         df = pd.concat([df, novo_aviao], ignore_index=True)
-        ManipularArquivos.salvar_informacoes(df, CAMINHO_AVIOES, cabecalho)
+        ManipulaArquivos.salvar_informacoes(df, CAMINHO_AVIOES, cabecalho)
     
     def carregarListaAvioes():
-        lista_avioes = ManipularArquivos.carregar_informacoes(CAMINHO_AVIOES, cabecalho, colunas)
+        lista_avioes = ManipulaArquivos.carregar_informacoes(CAMINHO_AVIOES, cabecalho, colunas)
         return lista_avioes
     

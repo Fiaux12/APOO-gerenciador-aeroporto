@@ -47,6 +47,18 @@
             "cpf": "22588",
             "tipo_aviao": "CARGA",
             "numero_licenca": "222"
+        },
+        {
+            "nome": "aa",
+            "cpf": "2234",
+            "tipo_aviao": "PASSAGEIRO",
+            "numero_licenca": "2"
+        },
+        {
+            "nome": "Glaucus",
+            "cpf": "456987",
+            "tipo_aviao": "PASSAGEIRO",
+            "numero_licenca": "45878"
         }
     ]
 }

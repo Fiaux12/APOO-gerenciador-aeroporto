@@ -1,40 +1,46 @@
 import flet as ft
-import funcionalidades.cadastros.piloto  as piloto
-import funcionalidades.cadastros.comissarios  as comissarios
-import funcionalidades.cadastros.aviao  as aviao
-import funcionalidades.home  as home
+import modulos.modulo_piloto as modulo_piloto
+import modulos.modulo_comissarios  as modulo_comissarios
+import modulos.modulo_tripulacao  as modulo_tripulacao
+import modulos.modulo_aviao  as modulo_aviao
+import modulos.modulo_home  as modulo_home
+
+# class Gerenciador():
+#     def __init__(self) -> None:
+#         Gerenciador.main()
 
 def update_content(index, body_content):
     body_content.controls.clear() 
 
     if index == 0: 
-        body_content.controls.append(home.home())
+        body_content.controls.append(modulo_home.ModuloHome.home())
         
     if index == 1: 
         body_content.controls.append(ft.Text("Pilotos", size=20))
-        body_content.controls.append(piloto.dialog())
+        body_content.controls.append(modulo_piloto.ModuloPiloto.dialog())
         body_content.controls.append(ft.Divider())
         body_content.controls.append(ft.Text("Cadastrar Pilotos", size=20))
-        body_content.controls.append(piloto.cadastrar_piloto())
-
+        body_content.controls.append(modulo_piloto.ModuloPiloto.cadastrar_piloto())
 
     elif index == 2: 
         body_content.controls.append(ft.Text("Comissários", size=20))
-        body_content.controls.append(comissarios.dialog())
+        body_content.controls.append(modulo_comissarios.ModuloComissario.dialog())
         body_content.controls.append(ft.Divider())
         body_content.controls.append(ft.Text("Cadastrar Comissários", size=20))
-        body_content.controls.append(comissarios.cadastrar_comissario())
+        body_content.controls.append(modulo_comissarios.ModuloComissario.cadastrar_comissario())
 
     elif index == 3:  
-        body_content.controls.append(ft.Text("Criar Tripulação", size=20))
+        body_content.controls.append(ft.Text("Tripulação", size=20))
+        body_content.controls.append(modulo_tripulacao.ModuloTripulacao.dialog())
+        body_content.controls.append(ft.Divider())
+        body_content.controls.append(modulo_tripulacao.ModuloTripulacao.criar_tripulacao())
 
     elif index == 4: 
         body_content.controls.append(ft.Text("Aviões", size=20))
-        body_content.controls.append(aviao.dialog())
+        body_content.controls.append(modulo_aviao.ModuloAviao.dialog())
         body_content.controls.append(ft.Divider())
         body_content.controls.append(ft.Text("Cadastrar Aviões", size=20))
-        body_content.controls.append(aviao.cadastrar_aviao())
-
+        body_content.controls.append(modulo_aviao.ModuloAviao.cadastrar_aviao())
 
     elif index == 5:  
         body_content.controls.append(ft.Text("Criar Voo", size=20))
@@ -54,7 +60,7 @@ def main(page: ft.Page):
         expand=True,
         scroll="adaptive",  
     )
-    body_content.controls.append(home.home())
+    body_content.controls.append(modulo_home.ModuloHome.home())
 
     rail = ft.NavigationRail(
         selected_index=0,
