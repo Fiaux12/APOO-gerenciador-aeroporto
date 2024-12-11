@@ -6,7 +6,7 @@
             "passaporte": "FS245798"
         },
         {
-            "nome": "João Souza",
+            "nome": "Jo\u00e3o Souza",
             "cpf": 31234567890,
             "passaporte": "BR123456"
         },
@@ -19,7 +19,11 @@
             "nome": "Carlos Santos",
             "cpf": 54321678901,
             "passaporte": "PT345987"
-        },
+        }
+        
+        
+        
+        ,
         {
             "nome": "Fernanda Lima",
             "cpf": 67812345678,
@@ -91,7 +95,7 @@
             "passaporte": "NL321098"
         },
         {
-            "nome": "Sofia Gonçalves",
+            "nome": "Sofia Gon\u00e7alves",
             "cpf": 45612378901,
             "passaporte": "BE210987"
         },
@@ -141,7 +145,7 @@
             "passaporte": "BG109876"
         },
         {
-            "nome": "Natália Souza",
+            "nome": "Nat\u00e1lia Souza",
             "cpf": 67890123420,
             "passaporte": "TR987654"
         },
@@ -216,12 +220,12 @@
             "passaporte": "GE432109"
         },
         {
-            "nome": "Antônio Duarte",
+            "nome": "Ant\u00f4nio Duarte",
             "cpf": 34567890145,
             "passaporte": "AM321098"
         },
         {
-            "nome": "Cátia Melo",
+            "nome": "C\u00e1tia Melo",
             "cpf": 89012345612,
             "passaporte": "AZ210987"
         },
@@ -231,7 +235,7 @@
             "passaporte": "KZ109876"
         },
         {
-            "nome": "Fábio Reis",
+            "nome": "F\u00e1bio Reis",
             "cpf": 67890123412,
             "passaporte": "KG987654"
         },
@@ -256,7 +260,7 @@
             "passaporte": "IR543210"
         },
         {
-            "nome": "Mônica Ferraz",
+            "nome": "M\u00f4nica Ferraz",
             "cpf": 78901234612,
             "passaporte": "IQ432109"
         },
@@ -356,7 +360,7 @@
             "passaporte": "MY321098"
         },
         {
-            "nome": "Natália Lemos",
+            "nome": "Nat\u00e1lia Lemos",
             "cpf": 54321987633,
             "passaporte": "SG210987"
         },
