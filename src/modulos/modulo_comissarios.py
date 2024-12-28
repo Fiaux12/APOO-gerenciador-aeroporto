@@ -24,7 +24,20 @@ class ModuloComissario():
         lista_linguas = [ft.Checkbox(label=lingua) for lingua in linguas]
         cadastrar = ft.ElevatedButton(text="Cadastrar", on_click=button_clicked)
 
-        return ft.Column(controls=[nome, cpf, certificado, texto_linguas] + lista_linguas + [cadastrar, t])
+        metade = len(lista_linguas) // 2
+        col1 = lista_linguas[:metade]
+        col2 = lista_linguas[metade:]
+
+        linguas_duas_colunas = ft.Row(
+            controls=[
+                ft.Column(controls=col1),
+                ft.Column(controls=col2),
+            ]
+        )
+
+        cadastrar = ft.ElevatedButton(text="Cadastrar", on_click=button_clicked)
+
+        return ft.Column(controls=[nome, cpf, certificado, texto_linguas, linguas_duas_colunas, cadastrar, t])
 
     def dialog():
         def carregar_lista_comissarios():
