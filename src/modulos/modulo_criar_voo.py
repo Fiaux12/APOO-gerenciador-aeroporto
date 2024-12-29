@@ -7,8 +7,12 @@ import classes.pessoa.passageiro as passageiros
 import classes.voo.voo as voo
 import classes.voo.local as local
 import classes.aviao.aviao as aviao
+import classes.utils.input_tempo as input_tempo
+import classes.utils.input_data as input_data
 
-class ModuloVoo():
+
+
+class ModuloCriarVoo():
     def __init__(self) -> None:
         pass
 
@@ -38,5 +42,22 @@ class ModuloVoo():
 
         cadastrar = ft.ElevatedButton(text="Cadastrar", on_click=button_clicked)
 
-        return ft.Column(controls=[texto_tripulacao, tripulacao_selecionada, texto_aviao, aviao_selecionada, texto_origem, origem, texto_destino, destino,cadastrar, t])
+        datepicker_data = input_data.InputData()
+        datepicker_tempo = input_tempo.InputTempo()
+
+        return ft.Column(controls=[
+                texto_tripulacao,
+                tripulacao_selecionada,
+                texto_aviao,
+                aviao_selecionada, 
+                texto_origem, 
+                origem,
+                texto_destino,
+                destino,
+                cadastrar,
+                datepicker_data,
+                datepicker_tempo,
+                t
+            ]
+        )
     

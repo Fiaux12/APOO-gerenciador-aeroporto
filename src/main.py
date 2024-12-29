@@ -47,7 +47,7 @@ def update_content(index, body_content):
     elif index == 5:  
         body_content.controls.append(ft.Text("Criar Voo", size=20))
         body_content.controls.append(ft.Divider())
-        body_content.controls.append(modulo_criar_voo.ModuloVoo.cria_voo())
+        body_content.controls.append(modulo_criar_voo.ModuloCriarVoo.cria_voo())
 
     elif index == 6:  
         body_content.controls.append(ft.Text("Visualizar Voos", size=20))
