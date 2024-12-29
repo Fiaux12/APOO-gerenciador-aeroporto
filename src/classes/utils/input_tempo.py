@@ -17,7 +17,7 @@ class InputTempo(ft.Column):
         self.controls = [
             ft.ElevatedButton(
                 "Horário de saída",
-                icon=ft.Icons.CALENDAR_MONTH,
+                icon=ft.Icons.AV_TIMER_ROUNDED,
                 on_click=self.open_time_picker,
             ),
             self.selected_time,
