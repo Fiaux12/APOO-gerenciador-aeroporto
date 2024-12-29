@@ -4,6 +4,7 @@ import modulos.modulo_comissarios  as modulo_comissarios
 import modulos.modulo_tripulacao  as modulo_tripulacao
 import modulos.modulo_aviao  as modulo_aviao
 import modulos.modulo_home  as modulo_home
+import modulos.modulo_criar_voo as modulo_criar_voo
 import modulos.modulo_voo as modulo_voo
 
 # class Gerenciador():
@@ -46,8 +47,12 @@ def update_content(index, body_content):
     elif index == 5:  
         body_content.controls.append(ft.Text("Criar Voo", size=20))
         body_content.controls.append(ft.Divider())
-        body_content.controls.append(modulo_voo.ModuloVoo.cria_voo())
-        body_content.controls.append(modulo_voo.ModuloVoo.visualizar_passageiros())
+        body_content.controls.append(modulo_criar_voo.ModuloVoo.cria_voo())
+
+    elif index == 6:  
+        body_content.controls.append(ft.Text("Visualizar Voos", size=20))
+        body_content.controls.append(ft.Divider())
+        body_content.controls.append(modulo_voo.ModuloVoo.visualizar_voos())
 
     body_content.update() 
 
@@ -87,6 +92,9 @@ def main(page: ft.Page):
             ),
             ft.NavigationRailDestination(
                 icon=ft.Icons.FLIGHT_OUTLINED, selected_icon=ft.Icons.FLIGHT, label="Aviões"
+            ),
+            ft.NavigationRailDestination(
+                icon=ft.Icons.MY_LIBRARY_ADD_OUTLINED, selected_icon=ft.Icons.MY_LIBRARY_ADD_ROUNDED, label="Criar Voo"
             ),
             ft.NavigationRailDestination(
                 icon=ft.Icons.FLIGHT_TAKEOFF_OUTLINED, selected_icon=ft.Icons.FLIGHT_TAKEOFF, label="Voos"
