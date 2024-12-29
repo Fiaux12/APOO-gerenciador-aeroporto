@@ -26,7 +26,7 @@ class ModuloCriarVoo():
             hora, minuto, seg = map(int, str(hora_str).split(':')) 
             saida = datetime.datetime(ano, mes, dia, hora, minuto,seg)
             
-            voo.Voo.cadastrar_voo(tripulacao_selecionada.value, aviao_selecionado.value, origem.value, destino.value, saida)
+            voo.Voo.constroi_voo(tripulacao_selecionada.value, aviao_selecionado.value, origem.value, destino.value, saida)
             t.update()
 
         tripulacoes = tripulacao.Tripulacao.carregarListaTripulacao()

@@ -1,10 +1,17 @@
+import pandas as pd
 from classes.enums.enum_tipo_aviao import EnumTipoAviao
 from classes.voo.tripulacao import Tripulacao
 from classes.aviao.aviao import Aviao
+from modulos.manipula_arquivos import ManipulaArquivos
 from .local import Local
 from .coordenadas import Coordenadas
 import math
 from datetime import datetime, timedelta
+
+CAMINHO_VOOS = "base_dados/voo/voos.json"
+cabecalho = 'Voos'
+colunas = ["tripulacao_id","aviao","origem","destino", "duracao_estimada", "saida", "chegada"]
+
 
 class Voo():
     def __init__(self) -> None:
@@ -19,7 +26,7 @@ class Voo():
    #--------------GET--------------
 
     @property
-    def tripulacao(self):
+    def tripulacao_id(self):
         return self.__tripulacao_id
     
     @property
@@ -48,8 +55,8 @@ class Voo():
     
         #--------------SET--------------
 
-    @tripulacao.setter
-    def tripulacao(self, valor: int):
+    @tripulacao_id.setter
+    def tripulacao_id(self, valor: int):
         self.__tripulacao_id = valor
     
     @aviao.setter
@@ -85,9 +92,9 @@ class Voo():
         self.__chegada = valor
             
         
-    #--------------PUBLIC---------------
+    #--------------PRIVATE---------------
 
-    def calcula_duracao(self):
+    def __calcula_duracao(self):
         # Formula de Haversine:
         # usada para calcula a distancia entre dois pontos da terra
         raio_terra = 6371
@@ -99,14 +106,45 @@ class Voo():
         distancia = 2 * raio_terra * math.asin(math.sqrt(aux1))
 
         self.duracao_estimada =  distancia / float(self.aviao.velocidade_maxima) # h = km/(km/h)
+    
+        
+    def __cria_retorno(self):
+        dias = int(self.duracao_estimada // 24)
+        horas_restantes = self.duracao_estimada % 24
+        horas = int(horas_restantes)
+        minutos = int((horas_restantes - horas) * 60)
+        segundos = int(((horas_restantes - horas) * 60 - minutos) * 60)
+        # print(f"Duração estimada: {dias} dias, {horas} horas, {minutos} minutos, {segundos} segundos")
+        
+        return timedelta(days=dias, hours=horas, minutes=minutos, seconds=segundos)
+    
+    def __cadastra_voo(self):
+        df = Voo.carregarListaVoos()
+        novo_voo = pd.DataFrame([
+            {
+                "tripulacao_id": self.tripulacao_id,
+                "aviao": self.aviao.numero_serie,
+                "origem": self.origem.cidade,
+                "destino": self.destino.cidade,
+                "duracao_estimada": self.duracao_estimada,
+                "saida": self.saida.isoformat(),
+                "chegada": self.chegada.isoformat(),
+            }
+        ])
 
-    def cadastrar_voo(tripulacao_id, numero_serie_aviao, origem, destino, saida):
+
+        df = pd.concat([df, novo_voo], ignore_index=True)
+        ManipulaArquivos.salvar_informacoes(df, CAMINHO_VOOS, cabecalho)
+
+    #--------------PUBLIC---------------
+
+    def constroi_voo(tripulacao_id, numero_serie_aviao, origem, destino, saida):
         voo = Voo()
 
         tripulacoes = Tripulacao.carregarListaTripulacao()
         for _, tripulacao in tripulacoes.iterrows():
             if tripulacao["id"] == int(tripulacao_id):
-                voo.tripulacao = tripulacao_id
+                voo.tripulacao_id = tripulacao_id
                 break
             
         avioes = Aviao.carregarListaAvioes()
@@ -146,19 +184,10 @@ class Voo():
                     voo.destino = Local(local["cidade"], local["estado"], local["pais"], destino_coordenadas)
 
         voo.saida = saida
-        voo.calcula_duracao()
+        voo.__calcula_duracao()
+        voo.chegada = saida + voo.__cria_retorno()
+        voo.__cadastra_voo()
 
-        dias = int(voo.duracao_estimada // 24)
-        horas_restantes = voo.duracao_estimada % 24
-        horas = int(horas_restantes)
-        minutos = int((horas_restantes - horas) * 60)
-        segundos = int(((horas_restantes - horas) * 60 - minutos) * 60)
-        
-        # print(f"Duração estimada: {dias} dias, {horas} horas, {minutos} minutos, {segundos} segundos")
-
-        voo.chegada = saida + timedelta(days=dias, hours=horas, minutes=minutos, seconds=segundos)
-        # print(f"Data de chegada: {voo.chegada}")
-
-        
-    def cria_retorno():
-        pass
+    def carregarListaVoos():
+        lista_voos = ManipulaArquivos.carregar_informacoes(CAMINHO_VOOS, cabecalho, colunas)
+        return lista_voos
