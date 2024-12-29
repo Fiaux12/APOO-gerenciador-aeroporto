@@ -27,7 +27,7 @@ class InputTempo(ft.Column):
         e.control.page.open(self.timepicker)
 
     def change_time(self, e):
-        self.selected_time.value = f"Selecione o horário: {self.timepicker.value}"
+        self.selected_time.value = f"Horário de Saída: {self.timepicker.value}"
         e.control.page.update()
 
     def did_mount(self):

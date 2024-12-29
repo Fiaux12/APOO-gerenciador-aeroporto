@@ -9,6 +9,7 @@ import classes.voo.local as local
 import classes.aviao.aviao as aviao
 import classes.utils.input_tempo as input_tempo
 import classes.utils.input_data as input_data
+import datetime
 
 
 
@@ -18,7 +19,14 @@ class ModuloCriarVoo():
 
     def cria_voo():
         def button_clicked(e):
+            data_str = datepicker_data.datepicker.value 
+            hora_str = datepicker_tempo.timepicker.value  
 
+            ano, mes, dia = map(int, str(data_str)[:10].split('-'))  
+            hora, minuto, seg = map(int, str(hora_str).split(':')) 
+            saida = datetime.datetime(ano, mes, dia, hora, minuto,seg)
+            
+            voo.Voo.cadastrar_voo(tripulacao_selecionada.value, aviao_selecionado.value, origem.value, destino.value, saida)
             t.update()
 
         tripulacoes = tripulacao.Tripulacao.carregarListaTripulacao()
@@ -34,29 +42,28 @@ class ModuloCriarVoo():
         texto_tripulacao = ft.Text("Selecione uma tripulação pela identificação", size=15)
         tripulacao_selecionada = ft.Dropdown(width=500, options=opcoes_tripulacao)
         texto_aviao = ft.Text("Selecione um avião pelo número de série", size=15)
-        aviao_selecionada = ft.Dropdown(width=500, options=opcoes_avioes)
+        aviao_selecionado = ft.Dropdown(width=500, options=opcoes_avioes)
         texto_origem = ft.Text("Selecione um local de origem pela cidade", size=15)
         origem = ft.Dropdown(width=500, options=opcoes_locais)
         texto_destino = ft.Text("Selecione um local de destino pela cidade", size=15)
         destino = ft.Dropdown(width=500, options=opcoes_locais)
-
-        cadastrar = ft.ElevatedButton(text="Cadastrar", on_click=button_clicked)
-
         datepicker_data = input_data.InputData()
         datepicker_tempo = input_tempo.InputTempo()
+
+        cadastrar = ft.ElevatedButton(text="Cadastrar", on_click=button_clicked)
 
         return ft.Column(controls=[
                 texto_tripulacao,
                 tripulacao_selecionada,
                 texto_aviao,
-                aviao_selecionada, 
+                aviao_selecionado, 
                 texto_origem, 
                 origem,
                 texto_destino,
                 destino,
-                cadastrar,
                 datepicker_data,
                 datepicker_tempo,
+                cadastrar,
                 t
             ]
         )

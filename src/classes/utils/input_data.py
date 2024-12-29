@@ -32,7 +32,7 @@ class InputData(ft.Column):
         self.datepicker.pick_date()
 
     def change_date(self, e):
-        self.selected_date.value = f"Selecione a data da saída: {self.datepicker.value}"
+        self.selected_date.value = f"Data de Saída: {self.datepicker.value}"
         self.page.update()
 
     def did_mount(self):
@@ -42,5 +42,6 @@ class InputData(ft.Column):
     def will_unmount(self):
         self.page.overlay.remove(self.datepicker)
         self.page.update()
+
 
     
