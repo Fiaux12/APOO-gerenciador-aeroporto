@@ -19,14 +19,27 @@ class ModuloCriarVoo():
 
     def cria_voo():
         def button_clicked(e):
-            data_str = datepicker_data.datepicker.value 
-            hora_str = datepicker_tempo.timepicker.value  
 
-            ano, mes, dia = map(int, str(data_str)[:10].split('-'))  
-            hora, minuto, seg = map(int, str(hora_str).split(':')) 
-            saida = datetime.datetime(ano, mes, dia, hora, minuto,seg)
+            saida = None
+
+            if datepicker_data.datepicker.value and datepicker_tempo.timepicker.value:
+                data_str = datepicker_data.datepicker.value 
+                hora_str = datepicker_tempo.timepicker.value  
+
+                ano, mes, dia = map(int, str(data_str)[:10].split('-'))  
+                hora, minuto, seg = map(int, str(hora_str).split(':')) 
+                saida = datetime.datetime(ano, mes, dia, hora, minuto,seg)
+
+            try:
+                voo.Voo.constroi_voo(tripulacao_selecionada.value, aviao_selecionado.value, origem.value, destino.value, saida)
+                t.value = f"Voo criado!"
+                t.color = ft.Colors.GREEN
+
+            except Exception as e:
+                print(f"An exception occurred: {e}")
+                t.value = f"{e}"
+                t.color = ft.Colors.RED
             
-            voo.Voo.constroi_voo(tripulacao_selecionada.value, aviao_selecionado.value, origem.value, destino.value, saida)
             t.update()
 
         tripulacoes = tripulacao.Tripulacao.carregarListaTripulacao()

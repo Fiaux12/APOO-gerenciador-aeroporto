@@ -66,13 +66,13 @@ class Voo():
     @origem.setter
     def origem(self, valor: Local):
         if not isinstance(valor, Local):
-            raise ValueError("Local de origem inválido.")
+            raise Exception("Local de origem inválido.")
         self.__origem = valor
 
     @destino.setter
     def destino(self, valor: Local):
         if not isinstance(valor, Local):
-            raise ValueError("Local de destino inválido.")
+            raise Exception("Local de destino inválido.")
         self.__destino = valor
             
     @duracao_estimada.setter
@@ -82,13 +82,13 @@ class Voo():
     @saida.setter
     def saida(self, valor: datetime):
         if not isinstance(valor, datetime):
-            raise ValueError("Data de saída inválida.")
+            raise Exception("Data de saída inválida.")
         self.__saida = valor
             
     @chegada.setter
     def chegada(self, valor: datetime):
         if not isinstance(valor, datetime):
-            raise ValueError("Data de Chegada inválida.")
+            raise Exception("Data de Chegada inválida.")
         self.__chegada = valor
             
         
@@ -167,7 +167,7 @@ class Voo():
                 break
 
         if origem == destino:
-            ValueError("O local de destino não pode ser o mesmo que a origem")
+            raise Exception("O local de destino não pode ser o mesmo que a origem")
         else:
             locais = Local.carregarListaLocal()
             for _, local in locais.iterrows():
