@@ -105,7 +105,7 @@ class ModuloTripulacao():
         return ft.DataTable(
             columns=[
                 ft.DataColumn(ft.Text("Identificação")),
-                ft.DataColumn(ft.Text("Comissarios")),
+                ft.DataColumn(ft.Text("Comissários")),
                 ft.DataColumn(ft.Text("Pilotos")),
             ],
             rows=[ft.DataRow(cells=[ft.DataCell(ft.Text(cell)) for cell in row]) for row in rows],

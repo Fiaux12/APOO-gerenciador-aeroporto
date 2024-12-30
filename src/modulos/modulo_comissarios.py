@@ -9,9 +9,17 @@ class ModuloComissario():
         def button_clicked(e):
             
             linguas_selecionadas = [lingua.label for lingua in lista_linguas if lingua.value]
-            comissario.ComissarioDeVoo.cadastrar(nome.value, cpf.value, linguas_selecionadas, certificado.value)
 
-            t.value = f"Nome: {nome.value}, CPF: {cpf.value}, Línguas: {', '.join(linguas_selecionadas)}."
+            try:
+                comissario.ComissarioDeVoo.cadastrar(nome.value, cpf.value, linguas_selecionadas, certificado.value)
+                t.value = f"Comissário {nome.value} cadastrado!"
+                t.color = ft.Colors.GREEN
+
+            except Exception as e:
+                print(f"An exception occurred: {e}")
+                t.value = f"{e}"
+                t.color = ft.Colors.RED
+
             t.update()
 
         t = ft.Text()
@@ -64,7 +72,7 @@ class ModuloComissario():
 
         return ft.Column(
             [
-                ft.ElevatedButton("Visualizar Comissarios", on_click=open_dlg),
+                ft.ElevatedButton("Visualizar Comissários", on_click=open_dlg),
             ]
         )
 
@@ -73,7 +81,7 @@ class ModuloComissario():
             columns=[
                 ft.DataColumn(ft.Text("Nome")),
                 ft.DataColumn(ft.Text("CPF")),
-                ft.DataColumn(ft.Text("Linguas Faladas")),
+                ft.DataColumn(ft.Text("Línguas Faladas")),
                 ft.DataColumn(ft.Text("Certificado")),
             ],
             rows=[ft.DataRow(cells=[ft.DataCell(ft.Text(cell)) for cell in row]) for row in rows],

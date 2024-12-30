@@ -28,10 +28,13 @@ class ComissarioDeVoo(Pessoa):
     @linguas.setter
     def linguas(self, valor):
         lista_linguas = ['Português', 'Inglês', 'Alemão', 'Russo', 'Chinês', 'Japonês', 'Francês', 'Italiano']
-   
+        
+        if not valor:  
+            raise Exception("A lista de línguas não pode ser vazia!")
+    
         for lingua in valor:
             if lingua not in lista_linguas:  
-                raise ValueError(f"Língua inválida: {lingua}")
+                raise Exception(f"Língua inválida!")
         self.__linguas = valor
     
     @numero_certificado.setter
@@ -39,7 +42,7 @@ class ComissarioDeVoo(Pessoa):
         if valor.isdigit():  
             self.__numero_certificado = valor
         else:
-            raise ValueError("Número do Certificado inválido!")
+            raise Exception("Número do Certificado inválido!")
 
     #--------------PRIVATE--------------
 

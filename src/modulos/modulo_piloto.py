@@ -10,7 +10,6 @@ class ModuloPiloto():
         def button_clicked(e):
             tipo_aviao = EnumTipoAviao.CARGA if aviao_carga.value else EnumTipoAviao.PASSAGEIRO
             
-
             try:
                 piloto.Piloto.cadastrar(nome.value, cpf.value, tipo_aviao, licenca.value)
                 t.value = f"Piloto {nome.value} cadastrado!"
