@@ -2,8 +2,10 @@ from abc import ABC, abstractmethod
 
 class Pessoa(ABC):
     def __init__(self, nome, cpf) -> None:
-        self._nome = nome
-        self._cpf = cpf
+        self._nome = None
+        self._cpf = None
+        self.nome = nome    # Chama o setter do nome
+        self.cpf = cpf      # Chama o setter do cpf
 
 
     #--------------GET--------------
@@ -19,9 +21,17 @@ class Pessoa(ABC):
 
     #--------------SET--------------
 
+    @nome.setter
+    def nome(self, valor):
+        print(valor)
+        if valor and valor.strip():  
+            self._nome = valor
+        else:
+            raise Exception("Nome inválido!")
+        
     @cpf.setter
     def cpf(self, valor):
         if valor.isdigit():  
             self._cpf = valor
         else:
-            raise ValueError("CPF inválido!")
+            raise Exception("CPF inválido!")
