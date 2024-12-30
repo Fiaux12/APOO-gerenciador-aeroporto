@@ -35,6 +35,15 @@
             "duracao_estimada": 16.970353231099477,
             "saida": "2024-12-29T22:54:00",
             "chegada": "2024-12-30T15:52:13"
+        },
+        {
+            "tripulacao_id": "2335020887952",
+            "aviao": "7789",
+            "origem": "Fortaleza",
+            "destino": "Curitiba",
+            "duracao_estimada": 10.632996290407222,
+            "saida": "2024-12-29T22:54:00",
+            "chegada": "2024-12-30T09:31:58"
         }
     ]
 }
