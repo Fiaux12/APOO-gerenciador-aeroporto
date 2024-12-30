@@ -1,18 +1,19 @@
 import pandas as pd
+from classes.pessoa.comissario_de_voo import ComissarioDeVoo
+from classes.pessoa.piloto import Piloto
 from modulos.manipula_arquivos import ManipulaArquivos
 
 CAMINHO_TRIPULACAO = "base_dados/voo/tripulacoes.json"
 cabecalho = 'Tripulacoes'
 colunas = ["id","comissarios_voo","pilotos"]
 
-_proximo_id = 1
 
 class Tripulacao():
+
     def __init__(self) -> None:
         self.__comissarios_voo = None
         self.__pilotos = None  
-        self.__id = Tripulacao._proximo_id  
-        Tripulacao._proximo_id += 1 
+        self.__id = id(self)
 
     #--------------GET--------------
 
@@ -32,7 +33,10 @@ class Tripulacao():
 
     @comissarios_voo.setter
     def comissarios_voo(self, valor):
-        self.__comissarios_voo = valor
+        if len(valor) != len(set(valor)):
+            raise Exception("Os comissários não podem se repetir!")
+        else:
+            self.__comissarios_voo = valor
     
     @pilotos.setter
     def pilotos(self, valor):
@@ -42,9 +46,11 @@ class Tripulacao():
     #--------------PUBLIC---------------
 
     def contruir_tripulacao(piloto, copiloto, comissarios):
-        lista_pilotos = [piloto, copiloto]
+        if piloto.split(',')[1] == copiloto.split(',')[1]:
+            raise Exception("Piloto principal e copiloto não podem ser a mesma pessoa!")
+
         tripulacao = Tripulacao()
-        tripulacao.pilotos = lista_pilotos
+        tripulacao.pilotos = [piloto, copiloto]
         tripulacao.comissarios_voo = comissarios
 
         df = Tripulacao.carregarListaTripulacao()
