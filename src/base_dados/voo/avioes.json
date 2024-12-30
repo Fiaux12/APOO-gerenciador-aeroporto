@@ -39,6 +39,26 @@
             "peso_maximo": "32",
             "numero_serie": "534",
             "tipo": "CARGA"
+        },
+        {
+            "capacidade_maxima": "123",
+            "velocidade_maxima": "123",
+            "qtd_motores": "12",
+            "modelo": "eweq",
+            "consumo": "231",
+            "peso_maximo": "123",
+            "numero_serie": "1243",
+            "tipo": "CARGA"
+        },
+        {
+            "capacidade_maxima": "34567",
+            "velocidade_maxima": "3212",
+            "qtd_motores": "1",
+            "modelo": "d2w",
+            "consumo": "123",
+            "peso_maximo": "3212",
+            "numero_serie": "213",
+            "tipo": "CARGA"
         }
     ]
 }

@@ -10,30 +10,39 @@ class ModuloAviao():
 
     def cadastrar_aviao():
         def button_clicked(e):
-            if aviao_carga.value:
-                aviao_carga_class.AviaoCarga.cadastrar(
-                    capacidade_max.value,
-                    velocidade_max.value, 
-                    qtd_motores.value, 
-                    modelo.value, 
-                    consumo.value, 
-                    peso_maximo.value, 
-                    serie.value,
-                    EnumTipoAviao.CARGA
-                )
-            else:
-                aviao_passageiro_class.AviaoPassageiro.cadastrar(
-                    capacidade_max.value,
-                    velocidade_max.value, 
-                    qtd_motores.value, 
-                    modelo.value, 
-                    consumo.value, 
-                    peso_maximo.value, 
-                    serie.value,
-                    EnumTipoAviao.PASSAGEIRO
-                )
 
-            t.value = f"Textboxes values are: '{capacidade_max.value}', '{velocidade_max.value}', '{qtd_motores.value}'."
+            try:
+                if aviao_carga.value:
+                    aviao_carga_class.AviaoCarga.cadastrar(
+                        capacidade_max.value,
+                        velocidade_max.value, 
+                        qtd_motores.value, 
+                        modelo.value, 
+                        consumo.value, 
+                        peso_maximo.value, 
+                        serie.value,
+                        EnumTipoAviao.CARGA
+                    )
+                else:
+                    aviao_passageiro_class.AviaoPassageiro.cadastrar(
+                        capacidade_max.value,
+                        velocidade_max.value, 
+                        qtd_motores.value, 
+                        modelo.value, 
+                        consumo.value, 
+                        peso_maximo.value, 
+                        serie.value,
+                        EnumTipoAviao.PASSAGEIRO
+                    )
+
+                t.value = f"Avião {serie.value} cadastrado!"
+                t.color = ft.Colors.GREEN
+
+            except Exception as e:
+                print(f"An exception occurred: {e}")
+                t.value = f"{e}"
+                t.color = ft.Colors.RED
+
             t.update()
 
         def aviao_carga_changed(e):
