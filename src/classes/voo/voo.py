@@ -10,7 +10,7 @@ from datetime import datetime, timedelta
 
 CAMINHO_VOOS = "base_dados/voo/voos.json"
 cabecalho = 'Voos'
-colunas = ["tripulacao_id","aviao","origem","destino", "duracao_estimada", "saida", "chegada"]
+colunas = ["tripulacao_id","aviao","origem","destino", "duracao_estimada", "saida", "chegada", "status"]
 
 
 class Voo():
@@ -22,6 +22,7 @@ class Voo():
         self.__duracao_estimada = None  #float | em horas
         self.__saida = None             #Datetime
         self.__chegada = None           #Datetime
+        self.__status = None            #EnumStatusVoo
 
    #--------------GET--------------
 
@@ -52,6 +53,10 @@ class Voo():
     @property
     def chegada(self):
         return self.__chegada
+    
+    @property
+    def status(self):
+        return self.__status
     
         #--------------SET--------------
 
@@ -129,6 +134,7 @@ class Voo():
                 "duracao_estimada": self.duracao_estimada,
                 "saida": self.saida.isoformat(),
                 "chegada": self.chegada.isoformat(),
+                "status": self.status,
             }
         ])
 

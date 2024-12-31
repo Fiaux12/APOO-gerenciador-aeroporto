@@ -8,7 +8,7 @@
             "consumo": "800",
             "peso_maximo": "700",
             "numero_serie": "7789",
-            "tipo": "CARGA"
+            "tipo": "Carga"
         },
         {
             "capacidade_maxima": "347",
@@ -28,7 +28,7 @@
             "consumo": "21",
             "peso_maximo": "32",
             "numero_serie": "12",
-            "tipo": "CARGA"
+            "tipo": "Carga"
         },
         {
             "capacidade_maxima": "54",
@@ -38,7 +38,7 @@
             "consumo": "6543",
             "peso_maximo": "32",
             "numero_serie": "534",
-            "tipo": "CARGA"
+            "tipo": "Carga"
         },
         {
             "capacidade_maxima": "123",
@@ -48,7 +48,7 @@
             "consumo": "231",
             "peso_maximo": "123",
             "numero_serie": "1243",
-            "tipo": "CARGA"
+            "tipo": "Carga"
         },
         {
             "capacidade_maxima": "34567",
@@ -58,7 +58,7 @@
             "consumo": "123",
             "peso_maximo": "3212",
             "numero_serie": "213",
-            "tipo": "CARGA"
+            "tipo": "Carga"
         }
     ]
 }
