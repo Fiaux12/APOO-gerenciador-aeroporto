@@ -1,4 +1,5 @@
 import pandas as pd
+from classes.enums.enum_status_voo import EnumStatusVoo
 from classes.enums.enum_tipo_aviao import EnumTipoAviao
 from classes.voo.tripulacao import Tripulacao
 from classes.aviao.aviao import Aviao
@@ -58,6 +59,10 @@ class Voo():
     def status(self):
         return self.__status
     
+    @property
+    def str_status(self):
+        return self.__status.value
+    
         #--------------SET--------------
 
     @tripulacao_id.setter
@@ -95,6 +100,13 @@ class Voo():
         if not isinstance(valor, datetime):
             raise Exception("Data de Chegada inválida.")
         self.__chegada = valor
+
+    @status.setter
+    def status(self, valor):
+        if valor == EnumStatusVoo.PLANEJADO:  
+            self.__status = valor
+        else:
+            raise Exception("Status do voo não pode ser diferente de Planejado durante a criação!")
             
         
     #--------------PRIVATE---------------
@@ -192,6 +204,7 @@ class Voo():
         voo.saida = saida
         voo.__calcula_duracao()
         voo.chegada = saida + voo.__cria_retorno()
+        voo.status = EnumStatusVoo.PLANEJADO
         voo.__cadastra_voo()
 
     def carregarListaVoos():

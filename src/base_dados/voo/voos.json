@@ -7,7 +7,8 @@
             "destino": "Manaus",
             "duracao_estimada": 16.970353231099477,
             "saida": "2024-12-29T20:18:00",
-            "chegada": "2024-12-30T13:16:13"
+            "chegada": "2024-12-30T13:16:13",
+            "status": "PLANEJADO"
         },
         {
             "tripulacao_id": "1949662912800",
@@ -16,7 +17,8 @@
             "destino": "Manaus",
             "duracao_estimada": 3.421481684628604,
             "saida": "2024-12-29T22:32:00",
-            "chegada": "2024-12-30T01:57:17"
+            "chegada": "2024-12-30T01:57:17",
+            "status": "PLANEJADO"
         },
         {
             "tripulacao_id": "2335020887952",
@@ -25,7 +27,8 @@
             "destino": "Manaus",
             "duracao_estimada": 16.970353231099477,
             "saida": "2024-12-29T22:52:00",
-            "chegada": "2024-12-30T15:50:13"
+            "chegada": "2024-12-30T15:50:13",
+            "status": "PLANEJADO"
         },
         {
             "tripulacao_id": "2335020887952",
@@ -34,7 +37,8 @@
             "destino": "Manaus",
             "duracao_estimada": 16.970353231099477,
             "saida": "2024-12-29T22:54:00",
-            "chegada": "2024-12-30T15:52:13"
+            "chegada": "2024-12-30T15:52:13",
+            "status": "PLANEJADO"
         },
         {
             "tripulacao_id": "2335020887952",
@@ -43,7 +47,8 @@
             "destino": "Curitiba",
             "duracao_estimada": 10.632996290407222,
             "saida": "2024-12-29T22:54:00",
-            "chegada": "2024-12-30T09:31:58"
+            "chegada": "2024-12-30T09:31:58",
+            "status": "PLANEJADO"
         }
     ]
 }
