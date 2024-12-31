@@ -54,8 +54,8 @@ class ModuloVoo():
                     row["origem"],
                     row["destino"],
                     duracao_arredondada+" h",  
-                    row["saida"].replace("T", "-"),
-                    row["chegada"].replace("T", "-"),
+                    row["saida"].replace("-", "/").replace("T", "-"),
+                    row["chegada"].replace("-", "/").replace("T", "-"),
                     row["status"],
                 ])
 
