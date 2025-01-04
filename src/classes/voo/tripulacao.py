@@ -68,3 +68,12 @@ class Tripulacao():
     def carregarListaTripulacao():
         lista_tripulacoes = ManipulaArquivos.carregar_informacoes(CAMINHO_TRIPULACAO, cabecalho, colunas)
         return lista_tripulacoes
+    
+    def getTripulacaoById(id):
+        lista_tripulacoes = ManipulaArquivos.carregar_informacoes(CAMINHO_TRIPULACAO, cabecalho, colunas)
+        trip_procurada = None
+        for _, tripulacao in lista_tripulacoes.iterrows():
+            if str(tripulacao["id"]) == id:
+                trip_procurada = tripulacao
+        
+        return trip_procurada

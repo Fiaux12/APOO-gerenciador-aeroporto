@@ -1,13 +1,7 @@
 import flet as ft
-import classes.pessoa.piloto  as piloto
-import classes.pessoa.comissario_de_voo  as comissario
-from classes.enums.enum_tipo_aviao import EnumTipoAviao
-import classes.voo.tripulacao as tripulacao
 import classes.pessoa.passageiro as passageiros
+from classes.voo.tripulacao import Tripulacao
 import classes.voo.voo as voo
-import classes.voo.local as local
-import classes.aviao.aviao as aviao
-import asyncio
 
 class ModuloVoo():
     def __init__(self) -> None:
@@ -62,6 +56,14 @@ class ModuloVoo():
             return rows
     
     def voosTable(rows):
+        def on_cell_click(e):
+            tripulacao = Tripulacao.getTripulacaoById(e.control.data)
+            dlg = ft.AlertDialog(
+                modal=True,
+                title=ft.Text("Detalhes das Tripulações"),
+                on_dismiss=lambda e: print("Dialog dismissed!"),
+            )
+        
         return ft.DataTable(
                 columns=[
                     ft.DataColumn(ft.Text("Avião")),
@@ -73,6 +75,38 @@ class ModuloVoo():
                     ft.DataColumn(ft.Text("Data de Chegada")),
                     ft.DataColumn(ft.Text("Status")),
                 ],
-                rows=[ft.DataRow(cells=[ft.DataCell(ft.Text(cell)) for cell in row]) for row in rows],
+                 rows=[
+                    ft.DataRow(
+                        cells=[
+                            ft.DataCell(ft.Text(cell)) if i != 1 else ft.DataCell(
+                                ft.ElevatedButton(
+                                    text="Detalhes",
+                                    data=row[1],  
+                                    on_click=on_cell_click, 
+                                )
+                            )
+                            for i, cell in enumerate(row)
+                        ]
+                    )
+                    for row in rows
+                ],
             )
-    
+
+    def dialog():
+        dlg = ft.AlertDialog(
+            title="aaa"
+        )
+
+        def open_dlg(e):
+            dlg.title = "AAAAAAAAA"
+            e.control.page.overlay.append(dlg)
+            dlg.open = True
+            e.control.page.update()
+
+        return ft.Column(
+            [
+                ft.ElevatedButton("Visualizar Tripulações", on_click=open_dlg),
+            ]
+        )
+
+   

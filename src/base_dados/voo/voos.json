@@ -49,6 +49,26 @@
             "saida": "2024-12-29T22:54:00",
             "chegada": "2024-12-30T09:31:58",
             "status": "PLANEJADO"
+        },
+        {
+            "tripulacao_id": "2335020676624",
+            "aviao": "534",
+            "origem": "Manaus",
+            "destino": "Recife",
+            "duracao_estimada": 266.289545462274,
+            "saida": "2025-01-02T14:43:00",
+            "chegada": "2025-01-13T17:00:22",
+            "status": "Planejado"
+        },
+        {
+            "tripulacao_id": "2335020887952",
+            "aviao": "1243",
+            "origem": "Manaus",
+            "destino": "Bel\u00e9m",
+            "duracao_estimada": 82.36969116924534,
+            "saida": "2025-01-02T14:43:00",
+            "chegada": "2025-01-06T01:05:10",
+            "status": "Planejado"
         }
     ]
 }

@@ -146,7 +146,7 @@ class Voo():
                 "duracao_estimada": self.duracao_estimada,
                 "saida": self.saida.isoformat(),
                 "chegada": self.chegada.isoformat(),
-                "status": self.status,
+                "status": self.str_status,
             }
         ])
 
