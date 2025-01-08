@@ -57,56 +57,62 @@ class ModuloVoo():
     
     def voosTable(rows):
         def on_cell_click(e):
-            tripulacao = Tripulacao.getTripulacaoById(e.control.data)
+            tripulacao_id = e.control.data
+            tripulacao = Tripulacao.getTripulacaoById(tripulacao_id)
+            detalhes_tripulacao = f"Número da tripulação {tripulacao_id}:\n\n"
+
+            detalhes_tripulacao += "Pilotos:\n"
+            for piloto in tripulacao["pilotos"]:
+                nome, registro = piloto.split(", ")
+                detalhes_tripulacao += f" - Nome: {nome}, CPF: {registro}\n"
+
+            detalhes_tripulacao += "\nComissários de Voo:\n"
+            for comissario in tripulacao["comissarios_voo"]:
+                nome, registro = comissario.split(", ")
+                detalhes_tripulacao += f" - Nome: {nome}, CPF: {registro}\n"
+
+
+            def close_dialog(e):
+                dlg.open = False
+                e.page.update()
+            
             dlg = ft.AlertDialog(
                 modal=True,
-                title=ft.Text("Detalhes das Tripulações"),
-                on_dismiss=lambda e: print("Dialog dismissed!"),
+                title=ft.Text("Detalhes da Tripulação"),
+                content=ft.Text(detalhes_tripulacao),
+                actions=[
+                    ft.TextButton("Fechar", on_click=close_dialog),
+                ]
             )
-        
-        return ft.DataTable(
-                columns=[
-                    ft.DataColumn(ft.Text("Avião")),
-                    ft.DataColumn(ft.Text("Tripulação")),
-                    ft.DataColumn(ft.Text("Cidade de Origem")),
-                    ft.DataColumn(ft.Text("Cidade do Destino")),
-                    ft.DataColumn(ft.Text("Duração Estimada")),
-                    ft.DataColumn(ft.Text("Data de Saída")),
-                    ft.DataColumn(ft.Text("Data de Chegada")),
-                    ft.DataColumn(ft.Text("Status")),
-                ],
-                 rows=[
-                    ft.DataRow(
-                        cells=[
-                            ft.DataCell(ft.Text(cell)) if i != 1 else ft.DataCell(
-                                ft.ElevatedButton(
-                                    text="Detalhes",
-                                    data=row[1],  
-                                    on_click=on_cell_click, 
-                                )
-                            )
-                            for i, cell in enumerate(row)
-                        ]
-                    )
-                    for row in rows
-                ],
-            )
-
-    def dialog():
-        dlg = ft.AlertDialog(
-            title="aaa"
-        )
-
-        def open_dlg(e):
-            dlg.title = "AAAAAAAAA"
-            e.control.page.overlay.append(dlg)
+            
+            e.page.dialog = dlg
             dlg.open = True
-            e.control.page.update()
+            e.page.update()
 
-        return ft.Column(
-            [
-                ft.ElevatedButton("Visualizar Tripulações", on_click=open_dlg),
-            ]
+        return ft.DataTable(
+            columns=[
+                ft.DataColumn(ft.Text("Avião")),
+                ft.DataColumn(ft.Text("Tripulação")),
+                ft.DataColumn(ft.Text("Cidade de Origem")),
+                ft.DataColumn(ft.Text("Cidade do Destino")),
+                ft.DataColumn(ft.Text("Duração Estimada")),
+                ft.DataColumn(ft.Text("Data de Saída")),
+                ft.DataColumn(ft.Text("Data de Chegada")),
+                ft.DataColumn(ft.Text("Status")),
+            ],
+            rows=[
+                ft.DataRow(
+                    cells=[
+                        ft.DataCell(ft.Text(cell)) if i != 1 else ft.DataCell(
+                            ft.ElevatedButton(
+                                text="Detalhes",
+                                data=row[1],  # Passa o id da tripulação
+                                on_click=on_cell_click, 
+                            )
+                        )
+                        for i, cell in enumerate(row)
+                    ]
+                )
+                for row in rows
+            ],
         )
-
-   

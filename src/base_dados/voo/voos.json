@@ -1,16 +1,6 @@
 {
     "Voos": [
         {
-            "tripulacao_id": "1",
-            "aviao": "7789",
-            "origem": "Fortaleza",
-            "destino": "Manaus",
-            "duracao_estimada": 16.970353231099477,
-            "saida": "2024-12-29T20:18:00",
-            "chegada": "2024-12-30T13:16:13",
-            "status": "PLANEJADO"
-        },
-        {
             "tripulacao_id": "1949662912800",
             "aviao": "7789",
             "origem": "Bras\u00edlia",
