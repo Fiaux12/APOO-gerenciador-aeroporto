@@ -40,14 +40,16 @@ class ModuloVoo():
 
             rows = []
             for _, row in df.iterrows():
-                duracao_arredondada = str(round(row["duracao_estimada"], 2))
+                duracao_horas = int(row["duracao_estimada"])
+                duracao_minutos = int((row["duracao_estimada"] - duracao_horas) * 60)
+                duracao_formatada = f"{duracao_horas}h {duracao_minutos} min"
 
                 rows.append([
                     row["aviao"],
                     row["tripulacao_id"],
                     row["origem"],
                     row["destino"],
-                    duracao_arredondada+" h",  
+                    duracao_formatada,  
                     row["saida"].replace("-", "/").replace("T", "-"),
                     row["chegada"].replace("-", "/").replace("T", "-"),
                     row["status"],
@@ -88,7 +90,8 @@ class ModuloVoo():
             e.page.dialog = dlg
             dlg.open = True
             e.page.update()
-
+        
+    
         return ft.DataTable(
             columns=[
                 ft.DataColumn(ft.Text("Avião")),

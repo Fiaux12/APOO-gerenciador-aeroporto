@@ -9,7 +9,7 @@
         {
             "nome": "Julia Alves",
             "cpf": 54,
-            "tipo_aviao": "PASSAGEIRO",
+            "tipo_aviao": "Passageiro",
             "numero_licenca": 659814
         },
         {
@@ -33,7 +33,7 @@
         {
             "nome": "Sofia",
             "cpf": "13198437854",
-            "tipo_aviao": "PASSAGEIRO",
+            "tipo_aviao": "Passageiro",
             "numero_licenca": "67343298"
         }
     ]

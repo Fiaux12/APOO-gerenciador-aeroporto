@@ -8,7 +8,7 @@
             "duracao_estimada": 3.421481684628604,
             "saida": "2024-12-29T22:32:00",
             "chegada": "2024-12-30T01:57:17",
-            "status": "PLANEJADO"
+            "status": "Planejado"
         },
         {
             "tripulacao_id": "2335020887952",
@@ -18,7 +18,7 @@
             "duracao_estimada": 16.970353231099477,
             "saida": "2024-12-29T22:52:00",
             "chegada": "2024-12-30T15:50:13",
-            "status": "PLANEJADO"
+            "status": "Planejado"
         },
         {
             "tripulacao_id": "2335020887952",
@@ -28,7 +28,7 @@
             "duracao_estimada": 16.970353231099477,
             "saida": "2024-12-29T22:54:00",
             "chegada": "2024-12-30T15:52:13",
-            "status": "PLANEJADO"
+            "status": "Planejado"
         },
         {
             "tripulacao_id": "2335020887952",
@@ -38,7 +38,7 @@
             "duracao_estimada": 10.632996290407222,
             "saida": "2024-12-29T22:54:00",
             "chegada": "2024-12-30T09:31:58",
-            "status": "PLANEJADO"
+            "status": "Planejado"
         },
         {
             "tripulacao_id": "2335020676624",
