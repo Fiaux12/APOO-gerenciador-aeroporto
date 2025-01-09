@@ -10,8 +10,8 @@ colunas = ["nome","cpf","tipo_aviao","numero_licenca"]
 class Piloto(Pessoa):
     def __init__(self, nome, cpf) -> None:
         super().__init__(nome, cpf)
-        self.__tipo_aviao = 0
-        self.__numero_licenca = 0
+        self.__tipo_aviao = None
+        self.__numero_licenca = None
 
 
     #--------------GET--------------
@@ -33,7 +33,7 @@ class Piloto(Pessoa):
 
     @tipo_aviao.setter
     def tipo_aviao(self, valor):
-        if valor in (EnumTipoAviao.CARGA, EnumTipoAviao.PASSAGEIRO):  
+        if valor in (EnumTipoAviao.CARGA, EnumTipoAviao.PASSAGEIRO) and valor != None:  
             self.__tipo_aviao = valor
         else:
             raise Exception("Tipo de avião inválido!")
