@@ -59,6 +59,16 @@
             "saida": "2025-01-02T14:43:00",
             "chegada": "2025-01-06T01:05:10",
             "status": "Planejado"
+        },
+        {
+            "tripulacao_id": "2053612533280",
+            "aviao": "1243",
+            "origem": "Bras\u00edlia",
+            "destino": "Bel\u00e9m",
+            "duracao_estimada": 92.51691781808016,
+            "saida": "2025-01-08T20:54:00",
+            "chegada": "2025-01-12T17:25:00",
+            "status": "Planejado"
         }
     ]
 }

@@ -24,6 +24,8 @@ class Voo():
         self.__saida = None             #Datetime
         self.__chegada = None           #Datetime
         self.__status = None            #EnumStatusVoo
+        self.__id = id(self)
+
 
    #--------------GET--------------
 
@@ -63,7 +65,11 @@ class Voo():
     def str_status(self):
         return self.__status.value
     
-        #--------------SET--------------
+    @property
+    def id(self):
+        return self.__id
+    
+    #--------------SET--------------
 
     @tripulacao_id.setter
     def tripulacao_id(self, valor: int):
@@ -139,6 +145,7 @@ class Voo():
         df = Voo.carregarListaVoos()
         novo_voo = pd.DataFrame([
             {
+                "id": self.id,
                 "tripulacao_id": self.tripulacao_id,
                 "aviao": self.aviao.numero_serie,
                 "origem": self.origem.cidade,
@@ -210,3 +217,7 @@ class Voo():
     def carregarListaVoos():
         lista_voos = ManipulaArquivos.carregar_informacoes(CAMINHO_VOOS, cabecalho, colunas)
         return lista_voos
+    
+    def atualizar_status_voo(valor, id):
+        df = Voo.carregarListaVoos()
+        # Terminar depois

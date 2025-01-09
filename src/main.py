@@ -75,7 +75,7 @@ def main(page: ft.Page):
         selected_index=0,
         label_type=ft.NavigationRailLabelType.ALL,
         min_width=100,
-        min_extended_width=400,
+        min_extended_width=500,
         group_alignment=-0.9,
         destinations=[
             ft.NavigationRailDestination(

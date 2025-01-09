@@ -25,6 +25,3 @@ class ManipulaArquivos():
         dados_json = {cabecalho: df.to_dict(orient="records")}
         with open(caminho, "w") as arquivo:
             json.dump(dados_json, arquivo, indent=4)
-
-
-    # TODO:Função para atualizar dados

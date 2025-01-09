@@ -1,4 +1,5 @@
 import flet as ft
+from classes.enums.enum_status_voo import EnumStatusVoo
 import classes.pessoa.passageiro as passageiros
 from classes.voo.tripulacao import Tripulacao
 import classes.voo.voo as voo
@@ -90,8 +91,38 @@ class ModuloVoo():
             e.page.dialog = dlg
             dlg.open = True
             e.page.update()
-        
-    
+
+        def on_cell_click_status(e):
+            opcoes_status = [
+                ft.dropdown.Option(EnumStatusVoo.PLANEJADO.value),
+                ft.dropdown.Option(EnumStatusVoo.CONFIRMADO.value),
+                ft.dropdown.Option(EnumStatusVoo.EMBARQUE.value),
+                ft.dropdown.Option(EnumStatusVoo.EM_VOO.value),
+                ft.dropdown.Option(EnumStatusVoo.FINALIZADO.value),
+                ft.dropdown.Option(EnumStatusVoo.CANCELADO.value),
+            ] 
+            status_selecionado = ft.Dropdown(width=500, options=opcoes_status)
+
+            def close_dialog(e):
+                print(status_selecionado.value)
+                voo.Voo.atualizar_status_voo(status_selecionado.value)
+
+                dlg.open = False
+                e.page.update()
+            
+            dlg = ft.AlertDialog(
+                modal=True,
+                title=ft.Text("Alterar status do voo"),
+                content=status_selecionado,
+                actions=[
+                    ft.TextButton("ok", on_click=close_dialog),
+                ]
+            )
+            
+            e.page.dialog = dlg
+            dlg.open = True
+            e.page.update()
+
         return ft.DataTable(
             columns=[
                 ft.DataColumn(ft.Text("Avião")),
@@ -106,11 +137,19 @@ class ModuloVoo():
             rows=[
                 ft.DataRow(
                     cells=[
-                        ft.DataCell(ft.Text(cell)) if i != 1 else ft.DataCell(
+                        ft.DataCell(ft.Text(cell)) 
+                        if i != 1 and i != 7 else ft.DataCell(
                             ft.ElevatedButton(
                                 text="Detalhes",
                                 data=row[1],  # Passa o id da tripulação
-                                on_click=on_cell_click, 
+                                on_click= on_cell_click, 
+                            )
+                        )
+                        if i == 1 else ft.DataCell(
+                            ft.ElevatedButton(
+                                text=str(cell),
+                                data=row[7],  
+                                on_click=on_cell_click_status, 
                             )
                         )
                         for i, cell in enumerate(row)
@@ -119,3 +158,7 @@ class ModuloVoo():
                 for row in rows
             ],
         )
+    
+    
+
+    
