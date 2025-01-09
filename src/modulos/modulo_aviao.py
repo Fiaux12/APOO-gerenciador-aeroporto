@@ -11,7 +11,12 @@ class ModuloAviao():
     def cadastrar_aviao():
         def button_clicked(e):
 
+            tipo_aviao = None
+            if aviao_carga.value != False and aviao_passageiro != False:
+                tipo_aviao = EnumTipoAviao.CARGA if aviao_carga.value else EnumTipoAviao.PASSAGEIRO
+
             try:
+                
                 if aviao_carga.value:
                     aviao_carga_class.AviaoCarga.cadastrar(
                         capacidade_max.value,
@@ -21,7 +26,7 @@ class ModuloAviao():
                         consumo.value, 
                         peso_maximo.value, 
                         serie.value,
-                        EnumTipoAviao.CARGA
+                        tipo_aviao
                     )
                 else:
                     aviao_passageiro_class.AviaoPassageiro.cadastrar(
@@ -32,7 +37,7 @@ class ModuloAviao():
                         consumo.value, 
                         peso_maximo.value, 
                         serie.value,
-                        EnumTipoAviao.PASSAGEIRO
+                        tipo_aviao
                     )
 
                 t.value = f"Avião {serie.value} cadastrado!"

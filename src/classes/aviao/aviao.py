@@ -108,7 +108,7 @@ class Aviao():
         
     @tipo.setter
     def tipo(self, valor):
-        if valor in (EnumTipoAviao.CARGA, EnumTipoAviao.PASSAGEIRO):  
+        if valor in (EnumTipoAviao.CARGA, EnumTipoAviao.PASSAGEIRO) and valor != None:  
             self._tipo = valor
         else:
             raise Exception("Tipo de avião inválido!")
