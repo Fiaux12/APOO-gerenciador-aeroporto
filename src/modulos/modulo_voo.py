@@ -14,24 +14,22 @@ class ModuloVoo():
             ModuloVoo.tabela_container.content = ModuloVoo.voosTable(rows)
 
     def visualizar_voos():
-        lista_passageiros = passageiros.Passageiro.carregarListaPassageiros()
+        # lista_passageiros = passageiros.Passageiro.carregarListaPassageiros()
 
-        controle_passageiros = []
-        for _, row in lista_passageiros.iterrows():
-            controle_passageiros.append(ft.ListTile(title=ft.Text(f'{row["nome"]}, {row["cpf"]}, {row["passaporte"]}'))),
+        # controle_passageiros = []
+        # for _, row in lista_passageiros.iterrows():
+        #     controle_passageiros.append(ft.ListTile(title=ft.Text(f'{row["nome"]}, {row["cpf"]}, {row["passaporte"]}'))),
 
-
+        # lista_passageiros = ft.ExpansionTile(
+        #     title=ft.Text("Passageiros do voo"),
+        #     affinity=ft.TileAffinity.PLATFORM,
+        #     subtitle=ft.Text("Nome, CPF, Passaporte"),
+        #     maintain_state=True,
+        #     collapsed_text_color=ft.Colors.BLUE,
+        #     text_color=ft.Colors.BLACK,
+        #     controls=controle_passageiros,
+        # )
         ModuloVoo.atualizar_tabela()
-
-        lista_passageiros = ft.ExpansionTile(
-            title=ft.Text("Passageiros do voo"),
-            affinity=ft.TileAffinity.PLATFORM,
-            subtitle=ft.Text("Nome, CPF, Passaporte"),
-            maintain_state=True,
-            collapsed_text_color=ft.Colors.BLUE,
-            text_color=ft.Colors.BLACK,
-            controls=controle_passageiros,
-        )
 
         return ft.Column(
             controls=[
