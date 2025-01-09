@@ -11,7 +11,7 @@ from datetime import datetime, timedelta
 
 CAMINHO_VOOS = "base_dados/voo/voos.json"
 cabecalho = 'Voos'
-colunas = ["tripulacao_id","aviao","origem","destino", "duracao_estimada", "saida", "chegada", "status"]
+colunas = ["tripulacao_id","aviao","origem","destino", "duracao_estimada", "saida", "chegada", "status", "id"]
 
 
 class Voo():
@@ -137,7 +137,6 @@ class Voo():
         horas = int(horas_restantes)
         minutos = int((horas_restantes - horas) * 60)
         segundos = int(((horas_restantes - horas) * 60 - minutos) * 60)
-        # print(f"Duração estimada: {dias} dias, {horas} horas, {minutos} minutos, {segundos} segundos")
         
         return timedelta(days=dias, hours=horas, minutes=minutos, seconds=segundos)
     
@@ -218,6 +217,10 @@ class Voo():
         lista_voos = ManipulaArquivos.carregar_informacoes(CAMINHO_VOOS, cabecalho, colunas)
         return lista_voos
     
-    def atualizar_status_voo(valor, id):
-        df = Voo.carregarListaVoos()
-        # Terminar depois
+    def atualizar_status_voo(novo_status, id_voo):
+        df = ManipulaArquivos.carregar_informacoes(CAMINHO_VOOS, cabecalho, colunas)
+
+        if id_voo in df["id"].values:
+            df.loc[df["id"] == id_voo, "status"] = novo_status
+
+            ManipulaArquivos.salvar_informacoes(df, CAMINHO_VOOS, cabecalho)

@@ -23,7 +23,6 @@ class Pessoa(ABC):
 
     @nome.setter
     def nome(self, valor):
-        print(valor)
         if valor and valor.strip():  
             self._nome = valor
         else:

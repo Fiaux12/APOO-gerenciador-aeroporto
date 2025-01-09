@@ -5,36 +5,40 @@ from classes.voo.tripulacao import Tripulacao
 import classes.voo.voo as voo
 
 class ModuloVoo():
+    tabela_container = ft.Container()
     def __init__(self) -> None:
         pass
+
+    def atualizar_tabela():
+            rows = ModuloVoo.carregar_lista_voos()
+            ModuloVoo.tabela_container.content = ModuloVoo.voosTable(rows)
 
     def visualizar_voos():
         lista_passageiros = passageiros.Passageiro.carregarListaPassageiros()
 
-
-        controle_passageiros=[]
+        controle_passageiros = []
         for _, row in lista_passageiros.iterrows():
             controle_passageiros.append(ft.ListTile(title=ft.Text(f'{row["nome"]}, {row["cpf"]}, {row["passaporte"]}'))),
-        
-        
-        rows = ModuloVoo.carregar_lista_voos()
-        tabela = ModuloVoo.voosTable(rows)
+
+
+        ModuloVoo.atualizar_tabela()
 
         lista_passageiros = ft.ExpansionTile(
-                    title=ft.Text("Passageiros do voo"),
-                    affinity=ft.TileAffinity.PLATFORM,
-                    subtitle=ft.Text("Nome, CPF, Passaporte"),
-                    maintain_state=True,
-                    collapsed_text_color=ft.Colors.BLUE,
-                    text_color=ft.Colors.BLACK,
-                    controls=controle_passageiros,
-                ),
+            title=ft.Text("Passageiros do voo"),
+            affinity=ft.TileAffinity.PLATFORM,
+            subtitle=ft.Text("Nome, CPF, Passaporte"),
+            maintain_state=True,
+            collapsed_text_color=ft.Colors.BLUE,
+            text_color=ft.Colors.BLACK,
+            controls=controle_passageiros,
+        )
 
         return ft.Column(
             controls=[
-                tabela
+                ModuloVoo.tabela_container  
             ]
         )
+
     
     def carregar_lista_voos():
             df = voo.Voo.carregarListaVoos()
@@ -54,6 +58,7 @@ class ModuloVoo():
                     row["saida"].replace("-", "/").replace("T", "-"),
                     row["chegada"].replace("-", "/").replace("T", "-"),
                     row["status"],
+                    row["id"],
                 ])
 
             return rows
@@ -93,6 +98,7 @@ class ModuloVoo():
             e.page.update()
 
         def on_cell_click_status(e):
+            id_voo = e.control.data
             opcoes_status = [
                 ft.dropdown.Option(EnumStatusVoo.PLANEJADO.value),
                 ft.dropdown.Option(EnumStatusVoo.CONFIRMADO.value),
@@ -104,8 +110,9 @@ class ModuloVoo():
             status_selecionado = ft.Dropdown(width=500, options=opcoes_status)
 
             def close_dialog(e):
-                print(status_selecionado.value)
-                voo.Voo.atualizar_status_voo(status_selecionado.value)
+                if status_selecionado.value != None:
+                    voo.Voo.atualizar_status_voo(status_selecionado.value, id_voo)
+                ModuloVoo.atualizar_tabela()
 
                 dlg.open = False
                 e.page.update()
@@ -115,7 +122,7 @@ class ModuloVoo():
                 title=ft.Text("Alterar status do voo"),
                 content=status_selecionado,
                 actions=[
-                    ft.TextButton("ok", on_click=close_dialog),
+                    ft.TextButton("Fechar", on_click=close_dialog),
                 ]
             )
             
@@ -123,6 +130,7 @@ class ModuloVoo():
             dlg.open = True
             e.page.update()
 
+      
         return ft.DataTable(
             columns=[
                 ft.DataColumn(ft.Text("Avião")),
@@ -133,32 +141,30 @@ class ModuloVoo():
                 ft.DataColumn(ft.Text("Data de Saída")),
                 ft.DataColumn(ft.Text("Data de Chegada")),
                 ft.DataColumn(ft.Text("Status")),
+                ft.DataColumn(ft.Text("ID"), visible=False),  # Torna a coluna do ID invisível
             ],
             rows=[
                 ft.DataRow(
                     cells=[
-                        ft.DataCell(ft.Text(cell)) 
-                        if i != 1 and i != 7 else ft.DataCell(
+                        ft.DataCell(ft.Text(cell)) if i != 1 and i != 7 and i != 8 else
+                        ft.DataCell(
                             ft.ElevatedButton(
                                 text="Detalhes",
-                                data=row[1],  # Passa o id da tripulação
-                                on_click= on_cell_click, 
+                                data=row[1],  # Tripulação ID
+                                on_click=on_cell_click,
                             )
-                        )
-                        if i == 1 else ft.DataCell(
+                        ) if i == 1 else
+                        ft.DataCell(
                             ft.ElevatedButton(
-                                text=str(cell),
-                                data=row[7],  
-                                on_click=on_cell_click_status, 
+                                text=str(cell),  # Texto do botão é o status
+                                data=row[8],  # Passa o ID do voo para ser usado no on_click
+                                on_click=on_cell_click_status,
                             )
-                        )
+                        ) if i == 7 else
+                        ft.DataCell(ft.Text(""), visible=False)  # Oculta o ID
                         for i, cell in enumerate(row)
                     ]
                 )
                 for row in rows
             ],
         )
-    
-    
-
-    

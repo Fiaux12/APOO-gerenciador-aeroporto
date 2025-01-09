@@ -58,7 +58,7 @@ def update_content(index, body_content):
 
 def main(page: ft.Page):
     page.title = "Gerenciador de Voos"
-    page.window.width = 1300
+    page.window.width = 1400
     page.window.height = 700
     page.scroll = "none"  
     page.vertical_alignment = ft.MainAxisAlignment.START
