@@ -22,8 +22,8 @@ $ cd src
 # Instale as dependências 
 $ pip install -r requirements.txt
 
-# Execute main.py
-$ python main.py
+# Execute gerenciador.py
+$ python gerenciador.py
 ```
 
 ### Autores :pencil2:
