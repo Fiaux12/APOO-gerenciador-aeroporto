@@ -120,6 +120,28 @@
             "chegada": "2025-01-29T22:37:39",
             "status": "Embarque",
             "id": 2332954259344
+        },
+        {
+            "tripulacao_id": "2335020887952",
+            "aviao": "7789",
+            "origem": "Fortaleza",
+            "destino": "Manaus",
+            "duracao_estimada": 16.970353231099477,
+            "saida": "2025-01-09T20:43:00",
+            "chegada": "2025-01-10T13:41:13",
+            "status": "Planejado",
+            "id": 2513256651376
+        },
+        {
+            "tripulacao_id": "2335020887952",
+            "aviao": "7789",
+            "origem": "Fortaleza",
+            "destino": "Manaus",
+            "duracao_estimada": 16.970353231099477,
+            "saida": "2025-01-09T20:43:00",
+            "chegada": "2025-01-10T13:41:13",
+            "status": "Planejado",
+            "id": 2513256653200
         }
     ]
 }

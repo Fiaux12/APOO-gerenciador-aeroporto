@@ -77,17 +77,20 @@ class Voo():
     
     @aviao.setter
     def aviao(self, valor: Aviao):
-        self.__aviao = valor
+        if not valor:
+            raise Exception("Selecione um avião!")
+        else:
+            self.__aviao = valor
 
     @origem.setter
     def origem(self, valor: Local):
-        if not isinstance(valor, Local):
+        if not isinstance(valor, Local) or not valor:
             raise Exception("Local de origem inválido.")
         self.__origem = valor
 
     @destino.setter
     def destino(self, valor: Local):
-        if not isinstance(valor, Local):
+        if not isinstance(valor, Local) or not valor:
             raise Exception("Local de destino inválido.")
         self.__destino = valor
             
@@ -165,6 +168,9 @@ class Voo():
     def constroi_voo(tripulacao_id, numero_serie_aviao, origem, destino, saida):
         voo = Voo()
 
+        if not tripulacao_id:
+            raise Exception("Selecione uma tripulação!")
+
         tripulacoes = Tripulacao.carregarListaTripulacao()
         for _, tripulacao in tripulacoes.iterrows():
             if tripulacao["id"] == int(tripulacao_id):
@@ -190,6 +196,13 @@ class Voo():
                 voo.aviao = cad_aviao
                 break
 
+        
+        if not origem:
+            raise Exception("Selecione uma origem!")
+        
+        if not destino:
+            raise Exception("Selecione um destino!")
+        
         if origem == destino:
             raise Exception("O local de destino não pode ser o mesmo que a origem")
         else:
