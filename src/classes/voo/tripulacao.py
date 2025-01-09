@@ -33,6 +33,9 @@ class Tripulacao():
 
     @comissarios_voo.setter
     def comissarios_voo(self, valor):
+        if not valor:
+            raise Exception("Selecione os comissários!")
+        
         if len(valor) != len(set(valor)):
             raise Exception("Os comissários não podem se repetir!")
         else:
@@ -40,12 +43,18 @@ class Tripulacao():
     
     @pilotos.setter
     def pilotos(self, valor):
-        self.__pilotos = valor
+        if not valor or len(valor) == 1:
+            raise Exception("Selecione um piloto e um copiloto piloto!")
+        else:
+            self.__pilotos = valor
         
         
     #--------------PUBLIC---------------
 
     def contruir_tripulacao(piloto, copiloto, comissarios):
+        if not piloto or not copiloto:
+            raise Exception("Selecione um piloto e um copiloto piloto!")
+        
         if piloto.split(',')[1] == copiloto.split(',')[1]:
             raise Exception("Piloto principal e copiloto não podem ser a mesma pessoa!")
 

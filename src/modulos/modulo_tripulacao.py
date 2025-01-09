@@ -77,7 +77,7 @@ class ModuloTripulacao():
             texto_numero_comissarios,
             numero_comissarios,
             lista_comissarios,
-            ft.ElevatedButton(text="Submit", on_click=button_clicked),
+            ft.ElevatedButton(text="Cadastrar", on_click=button_clicked),
             t
         ])
 
