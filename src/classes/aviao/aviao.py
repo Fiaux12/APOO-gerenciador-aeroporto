@@ -62,53 +62,56 @@ class Aviao():
         if valor.isdigit():  
             self._capacidade_maxima = valor
         else:
-            raise ValueError("Capacidade inválida!")
+            raise Exception("Capacidade inválida!")
         
     @velocidade_maxima.setter
     def velocidade_maxima(self, valor):
         if valor.isdigit():  
             self._velocidade_maxima = valor
         else:
-            raise ValueError("Velocidade inválido!")
+            raise Exception("Velocidade inválido!")
         
     @qtd_motores.setter
     def qtd_motores(self, valor):
         if valor.isdigit():  
             self._qtd_motores = valor
         else:
-            raise ValueError("Número de motores inválido!")
+            raise Exception("Número de motores inválido!")
         
     @modelo.setter
     def modelo(self, valor):
-        self._modelo = valor
+        if valor and valor.strip(): 
+            self._modelo = valor
+        else:
+            raise Exception("Modelo inválido!")
 
     @consumo.setter
     def consumo(self, valor):
         if valor.isdigit():  
             self._consumo = valor
         else:
-            raise ValueError("Consumo inválido!")
+            raise Exception("Consumo inválido!")
     
     @peso_maximo.setter
     def peso_maximo(self, valor):
         if valor.isdigit():  
             self._peso_maximo = valor
         else:
-            raise ValueError("Peso inválido!")
+            raise Exception("Peso inválido!")
     
     @numero_serie.setter
     def numero_serie(self, valor):
         if valor.isdigit():  
             self._numero_serie = valor
         else:
-            raise ValueError("Número de série inválido!")
+            raise Exception("Número de série inválido!")
         
     @tipo.setter
     def tipo(self, valor):
-        if valor in (EnumTipoAviao.CARGA, EnumTipoAviao.PASSAGEIRO):  
+        if valor in (EnumTipoAviao.CARGA, EnumTipoAviao.PASSAGEIRO) and valor != None:  
             self._tipo = valor
         else:
-            raise ValueError("Tipo de avião inválido!")
+            raise Exception("Tipo de avião inválido!")
         
     #--------------PRIVATE--------------
 
@@ -126,7 +129,13 @@ class Aviao():
         aviao.tipo = tipo
         
 
-        df = Aviao.carregarListaAvioes()
+        avioes = Aviao.carregarListaAvioes()
+
+        for _, aviao_ in avioes.iterrows():
+            if aviao_["numero_serie"] == numero_serie:
+                raise Exception("Já existe um avião com esse numero de série!")
+        
+
         novo_aviao = pd.DataFrame([
             {
                 "numero_serie": aviao.numero_serie,
@@ -140,8 +149,8 @@ class Aviao():
             }
         ])
 
-        df = pd.concat([df, novo_aviao], ignore_index=True)
-        ManipulaArquivos.salvar_informacoes(df, CAMINHO_AVIOES, cabecalho)
+        avioes = pd.concat([avioes, novo_aviao], ignore_index=True)
+        ManipulaArquivos.salvar_informacoes(avioes, CAMINHO_AVIOES, cabecalho)
     
     def carregarListaAvioes():
         lista_avioes = ManipulaArquivos.carregar_informacoes(CAMINHO_AVIOES, cabecalho, colunas)

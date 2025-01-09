@@ -1,112 +1,168 @@
 import flet as ft
-import classes.pessoa.piloto  as piloto
-import classes.pessoa.comissario_de_voo  as comissario
-from classes.enums.enum_tipo_aviao import EnumTipoAviao
-import classes.voo.tripulacao as tripulacao
+from classes.enums.enum_status_voo import EnumStatusVoo
+import classes.pessoa.passageiro as passageiros
+from classes.voo.tripulacao import Tripulacao
+import classes.voo.voo as voo
 
 class ModuloVoo():
+    tabela_container = ft.Container()
     def __init__(self) -> None:
         pass
 
+    def atualizar_tabela():
+            rows = ModuloVoo.carregar_lista_voos()
+            ModuloVoo.tabela_container.content = ModuloVoo.voosTable(rows)
 
-    def criar_tripulacao():
-        def button_clicked(e):
-            piloto_selecionado_str = f"Pilotos selecionados: {piloto_selecionado_1.value}, {piloto_selecionado_2.value}\n"
-            comissarios_selecionados = [
-                dropdown.value for dropdown in dropdowns_comissarios if dropdown.value
+    def visualizar_voos():
+        # lista_passageiros = passageiros.Passageiro.carregarListaPassageiros()
+
+        # controle_passageiros = []
+        # for _, row in lista_passageiros.iterrows():
+        #     controle_passageiros.append(ft.ListTile(title=ft.Text(f'{row["nome"]}, {row["cpf"]}, {row["passaporte"]}'))),
+
+        # lista_passageiros = ft.ExpansionTile(
+        #     title=ft.Text("Passageiros do voo"),
+        #     affinity=ft.TileAffinity.PLATFORM,
+        #     subtitle=ft.Text("Nome, CPF, Passaporte"),
+        #     maintain_state=True,
+        #     collapsed_text_color=ft.Colors.BLUE,
+        #     text_color=ft.Colors.BLACK,
+        #     controls=controle_passageiros,
+        # )
+        ModuloVoo.atualizar_tabela()
+
+        return ft.Column(
+            controls=[
+                ModuloVoo.tabela_container  
             ]
-            comissarios_selecionados_str = f"Comissários selecionados: {', '.join(comissarios_selecionados)}"
-            t.value = piloto_selecionado_str + comissarios_selecionados_str
-            t.update()
-
-            tripulacao.Tripulacao.contruir_tripulacao(piloto_selecionado_1.value, piloto_selecionado_2.value, comissarios_selecionados)
-
-        pilotos = piloto.Piloto.carregarListaPilotos()
-        opcoes_pilotos = [ft.dropdown.Option(piloto["nome"]) for _, piloto in pilotos.iterrows()] if not pilotos.empty else []
-
-        comissarios = comissario.ComissarioDeVoo.carregarListaComissarios()
-        opcoes_comissarios = [ft.dropdown.Option(comissario["nome"]) for _, comissario in comissarios.iterrows()] if not comissarios.empty else []
-
-        dropdowns_comissarios = []
-
-        def atualizar_comissarios(e):
-            quantidade = int(numero_comissarios.value) if numero_comissarios.value else 0
-            lista_comissarios.controls.clear()
-            dropdowns_comissarios.clear()
-            lista_comissarios.controls.append(ft.Text("Selecione os comissários", size=15))
-            for i in range(quantidade):
-                dropdown = ft.Dropdown(
-                    width=500,
-                    options=opcoes_comissarios,
-                    hint_text=f"Comissário {i + 1}"
-                )
-                dropdowns_comissarios.append(dropdown)
-                lista_comissarios.controls.append(dropdown)
-            lista_comissarios.update()
-
-        t = ft.Text()
-        texto_piloto_1 = ft.Text("Selecione o piloto principal", size=15)
-        piloto_selecionado_1 = ft.Dropdown(width=500, options=opcoes_pilotos)
-
-        texto_piloto_2 = ft.Text("Selecione o copiloto", size=15)
-        piloto_selecionado_2 = ft.Dropdown(width=500, options=opcoes_pilotos)
-
-        texto_numero_comissarios = ft.Text("Selecione o número de comissários", size=15)
-        numero_comissarios = ft.Dropdown(
-            width=100,
-            options=[ft.dropdown.Option(str(i)) for i in range(1, 11)],
-            on_change=atualizar_comissarios
         )
 
-        lista_comissarios = ft.Column()
-
-        return ft.Column(controls=[
-            texto_piloto_1,
-            piloto_selecionado_1,
-            texto_piloto_2,
-            piloto_selecionado_2,
-            texto_numero_comissarios,
-            numero_comissarios,
-            lista_comissarios,
-            ft.ElevatedButton(text="Submit", on_click=button_clicked),
-            t
-        ])
-
-    def dialog():
-        def carregar_lista_tripulacoes():
-            df = tripulacao.Tripulacao.carregarListaTripulacao()
+    
+    def carregar_lista_voos():
+            df = voo.Voo.carregarListaVoos()
 
             rows = []
             for _, row in df.iterrows():
-                comissarios = ', '.join(row["comissarios_voo"]) 
-                pilotos = ', '.join(row["pilotos"]) 
-                rows.append([comissarios, pilotos])
+                duracao_horas = int(row["duracao_estimada"])
+                duracao_minutos = int((row["duracao_estimada"] - duracao_horas) * 60)
+                duracao_formatada = f"{duracao_horas}h {duracao_minutos} min"
+
+                rows.append([
+                    row["aviao"],
+                    row["tripulacao_id"],
+                    row["origem"],
+                    row["destino"],
+                    duracao_formatada,  
+                    row["saida"].replace("-", "/").replace("T", "-"),
+                    row["chegada"].replace("-", "/").replace("T", "-"),
+                    row["status"],
+                    row["id"],
+                ])
 
             return rows
+    
+    def voosTable(rows):
+        def on_cell_click(e):
+            tripulacao_id = e.control.data
+            tripulacao = Tripulacao.getTripulacaoById(tripulacao_id)
+            detalhes_tripulacao = f"Número da tripulação {tripulacao_id}:\n\n"
 
-        rows = carregar_lista_tripulacoes()
-        dlg = ft.AlertDialog(
-            title=tripulacoesTable(rows), on_dismiss=lambda e: print("Dialog dismissed!")
-        )
+            detalhes_tripulacao += "Pilotos:\n"
+            for piloto in tripulacao["pilotos"]:
+                nome, registro = piloto.split(", ")
+                detalhes_tripulacao += f" - Nome: {nome}, CPF: {registro}\n"
 
-        def open_dlg(e):
-            rows = carregar_lista_tripulacoes()
-            dlg.title = tripulacoesTable(rows) 
-            e.control.page.overlay.append(dlg)
+            detalhes_tripulacao += "\nComissários de Voo:\n"
+            for comissario in tripulacao["comissarios_voo"]:
+                nome, registro = comissario.split(", ")
+                detalhes_tripulacao += f" - Nome: {nome}, CPF: {registro}\n"
+
+
+            def close_dialog(e):
+                dlg.open = False
+                e.page.update()
+            
+            dlg = ft.AlertDialog(
+                modal=True,
+                title=ft.Text("Detalhes da Tripulação"),
+                content=ft.Text(detalhes_tripulacao),
+                actions=[
+                    ft.TextButton("Fechar", on_click=close_dialog),
+                ]
+            )
+            
+            e.page.dialog = dlg
             dlg.open = True
-            e.control.page.update()
+            e.page.update()
 
-        return ft.Column(
-            [
-                ft.ElevatedButton("Visualizar Tripulações", on_click=open_dlg),
-            ]
-        )
+        def on_cell_click_status(e):
+            id_voo = e.control.data
+            opcoes_status = [
+                ft.dropdown.Option(EnumStatusVoo.PLANEJADO.value),
+                ft.dropdown.Option(EnumStatusVoo.CONFIRMADO.value),
+                ft.dropdown.Option(EnumStatusVoo.EMBARQUE.value),
+                ft.dropdown.Option(EnumStatusVoo.EM_VOO.value),
+                ft.dropdown.Option(EnumStatusVoo.FINALIZADO.value),
+                ft.dropdown.Option(EnumStatusVoo.CANCELADO.value),
+            ] 
+            status_selecionado = ft.Dropdown(width=500, options=opcoes_status)
 
-    def tripulacoesTable(rows):
+            def close_dialog(e):
+                if status_selecionado.value != None:
+                    voo.Voo.atualizar_status_voo(status_selecionado.value, id_voo)
+                ModuloVoo.atualizar_tabela()
+
+                dlg.open = False
+                e.page.update()
+            
+            dlg = ft.AlertDialog(
+                modal=True,
+                title=ft.Text("Alterar status do voo"),
+                content=status_selecionado,
+                actions=[
+                    ft.TextButton("Fechar", on_click=close_dialog),
+                ]
+            )
+            
+            e.page.dialog = dlg
+            dlg.open = True
+            e.page.update()
+
+      
         return ft.DataTable(
             columns=[
-                ft.DataColumn(ft.Text("Comissarios")),
-                ft.DataColumn(ft.Text("Pilotos")),
+                ft.DataColumn(ft.Text("Avião")),
+                ft.DataColumn(ft.Text("Tripulação")),
+                ft.DataColumn(ft.Text("Cidade de Origem")),
+                ft.DataColumn(ft.Text("Cidade do Destino")),
+                ft.DataColumn(ft.Text("Duração Estimada")),
+                ft.DataColumn(ft.Text("Data de Saída")),
+                ft.DataColumn(ft.Text("Data de Chegada")),
+                ft.DataColumn(ft.Text("Status")),
+                ft.DataColumn(ft.Text("ID"), visible=False),  # Torna a coluna do ID invisível
             ],
-            rows=[ft.DataRow(cells=[ft.DataCell(ft.Text(cell)) for cell in row]) for row in rows],
+            rows=[
+                ft.DataRow(
+                    cells=[
+                        ft.DataCell(ft.Text(cell)) if i != 1 and i != 7 and i != 8 else
+                        ft.DataCell(
+                            ft.ElevatedButton(
+                                text="Detalhes",
+                                data=row[1],  # Tripulação ID
+                                on_click=on_cell_click,
+                            )
+                        ) if i == 1 else
+                        ft.DataCell(
+                            ft.ElevatedButton(
+                                text=str(cell),  # Texto do botão é o status
+                                data=row[8],  # Passa o ID do voo para ser usado no on_click
+                                on_click=on_cell_click_status,
+                            )
+                        ) if i == 7 else
+                        ft.DataCell(ft.Text(""), visible=False)  # Oculta o ID
+                        for i, cell in enumerate(row)
+                    ]
+                )
+                for row in rows
+            ],
         )

@@ -1,6 +1,6 @@
 
 class Coordenadas():
-    def __init__(self, latitude:int, longitude: int) -> None:
+    def __init__(self) -> None:
         self.__latitude = None
         self.__longitude = None
 
@@ -19,15 +19,16 @@ class Coordenadas():
 
     @latitude.setter
     def latitude(self, valor):
-        if valor.isdigit():  
-            self.__latitude = valor
-        else:
-            raise ValueError("Latitude inválida!")
+        if not (-90.0 <= valor <= 90.0):
+            raise ValueError("Latitude deve estar no intervalo de -90 a 90.")
+        self.__latitude = valor
+        
     
     @longitude.setter
     def longitude(self, valor):
-        if valor.isdigit():  
-            self.__longitude = valor
-        else:
-            raise ValueError("Longitude inválida!")
+        if not (-180.0 <= valor <= 180.0):
+            raise ValueError("Longitude deve estar no intervalo de -180 a 180.")
+        self.__longitude = valor
+        
+        
         

@@ -16,15 +16,25 @@ class ModuloTripulacao():
             ]
             comissarios_selecionados_str = f"Comissários selecionados: {', '.join(comissarios_selecionados)}"
             t.value = piloto_selecionado_str + comissarios_selecionados_str
-            t.update()
 
-            tripulacao.Tripulacao.contruir_tripulacao(piloto_selecionado_1.value, piloto_selecionado_2.value, comissarios_selecionados)
+            try:
+                tripulacao.Tripulacao.contruir_tripulacao(piloto_selecionado_1.value, piloto_selecionado_2.value, comissarios_selecionados)
+                t.value = f"Tripuação cadastrada!"
+                t.color = ft.Colors.GREEN
+
+            except Exception as e:
+                print(f"An exception occurred: {e}")
+                t.value = f"{e}"
+                t.color = ft.Colors.RED
+                
+            t.update()
+            
 
         pilotos = piloto.Piloto.carregarListaPilotos()
-        opcoes_pilotos = [ft.dropdown.Option(piloto["nome"]) for _, piloto in pilotos.iterrows()] if not pilotos.empty else []
+        opcoes_pilotos = [ft.dropdown.Option(f"{piloto["nome"]}, {piloto["cpf"]}") for _, piloto in pilotos.iterrows()] if not pilotos.empty else []
 
         comissarios = comissario.ComissarioDeVoo.carregarListaComissarios()
-        opcoes_comissarios = [ft.dropdown.Option(comissario["nome"]) for _, comissario in comissarios.iterrows()] if not comissarios.empty else []
+        opcoes_comissarios = [ft.dropdown.Option(f"{comissario["nome"]}, {comissario["cpf"]}") for _, comissario in comissarios.iterrows()] if not comissarios.empty else []
 
         dropdowns_comissarios = []
 
@@ -32,7 +42,7 @@ class ModuloTripulacao():
             quantidade = int(numero_comissarios.value) if numero_comissarios.value else 0
             lista_comissarios.controls.clear()
             dropdowns_comissarios.clear()
-            lista_comissarios.controls.append(ft.Text("Selecione os comissários", size=15))
+            lista_comissarios.controls.append(ft.Text("Selecione os comissários pelo nome e cpf", size=15))
             for i in range(quantidade):
                 dropdown = ft.Dropdown(
                     width=500,
@@ -44,10 +54,10 @@ class ModuloTripulacao():
             lista_comissarios.update()
 
         t = ft.Text()
-        texto_piloto_1 = ft.Text("Selecione o piloto principal", size=15)
+        texto_piloto_1 = ft.Text("Selecione o piloto principal pelo nome e cpf", size=15)
         piloto_selecionado_1 = ft.Dropdown(width=500, options=opcoes_pilotos)
 
-        texto_piloto_2 = ft.Text("Selecione o copiloto", size=15)
+        texto_piloto_2 = ft.Text("Selecione o copiloto pelo nome e cpf", size=15)
         piloto_selecionado_2 = ft.Dropdown(width=500, options=opcoes_pilotos)
 
         texto_numero_comissarios = ft.Text("Selecione o número de comissários", size=15)
@@ -67,7 +77,7 @@ class ModuloTripulacao():
             texto_numero_comissarios,
             numero_comissarios,
             lista_comissarios,
-            ft.ElevatedButton(text="Submit", on_click=button_clicked),
+            ft.ElevatedButton(text="Cadastrar", on_click=button_clicked),
             t
         ])
 
@@ -79,7 +89,7 @@ class ModuloTripulacao():
             for _, row in df.iterrows():
                 comissarios = ', '.join(row["comissarios_voo"]) 
                 pilotos = ', '.join(row["pilotos"]) 
-                rows.append([comissarios, pilotos])
+                rows.append([row["id"],comissarios, pilotos])
 
             return rows
 
@@ -104,7 +114,8 @@ class ModuloTripulacao():
     def tripulacoesTable(rows):
         return ft.DataTable(
             columns=[
-                ft.DataColumn(ft.Text("Comissarios")),
+                ft.DataColumn(ft.Text("Identificação")),
+                ft.DataColumn(ft.Text("Comissários")),
                 ft.DataColumn(ft.Text("Pilotos")),
             ],
             rows=[ft.DataRow(cells=[ft.DataCell(ft.Text(cell)) for cell in row]) for row in rows],

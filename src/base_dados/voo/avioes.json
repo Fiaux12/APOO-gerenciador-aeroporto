@@ -8,7 +8,7 @@
             "consumo": "800",
             "peso_maximo": "700",
             "numero_serie": "7789",
-            "tipo": "CARGA"
+            "tipo": "Carga"
         },
         {
             "capacidade_maxima": "347",
@@ -18,7 +18,7 @@
             "consumo": "200",
             "peso_maximo": "300",
             "numero_serie": "7784",
-            "tipo": "PASSAGEIRO"
+            "tipo": "Passageiro"
         },
         {
             "capacidade_maxima": "233",
@@ -28,7 +28,7 @@
             "consumo": "21",
             "peso_maximo": "32",
             "numero_serie": "12",
-            "tipo": "CARGA"
+            "tipo": "Carga"
         },
         {
             "capacidade_maxima": "54",
@@ -38,7 +38,57 @@
             "consumo": "6543",
             "peso_maximo": "32",
             "numero_serie": "534",
-            "tipo": "CARGA"
+            "tipo": "Carga"
+        },
+        {
+            "capacidade_maxima": "123",
+            "velocidade_maxima": "123",
+            "qtd_motores": "12",
+            "modelo": "eweq",
+            "consumo": "231",
+            "peso_maximo": "123",
+            "numero_serie": "1243",
+            "tipo": "Carga"
+        },
+        {
+            "capacidade_maxima": "34567",
+            "velocidade_maxima": "3212",
+            "qtd_motores": "1",
+            "modelo": "d2w",
+            "consumo": "123",
+            "peso_maximo": "3212",
+            "numero_serie": "213",
+            "tipo": "Carga"
+        },
+        {
+            "capacidade_maxima": "45",
+            "velocidade_maxima": "654",
+            "qtd_motores": "45",
+            "modelo": "54k",
+            "consumo": "485",
+            "peso_maximo": "654",
+            "numero_serie": "777",
+            "tipo": "Passageiro"
+        },
+        {
+            "capacidade_maxima": "4",
+            "velocidade_maxima": "4",
+            "qtd_motores": "4",
+            "modelo": "4",
+            "consumo": "4",
+            "peso_maximo": "4",
+            "numero_serie": "4",
+            "tipo": "Passageiro"
+        },
+        {
+            "capacidade_maxima": "1",
+            "velocidade_maxima": "1",
+            "qtd_motores": "1",
+            "modelo": "1",
+            "consumo": "1",
+            "peso_maximo": "1",
+            "numero_serie": "1",
+            "tipo": "Carga"
         }
     ]
 }

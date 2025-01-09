@@ -1,0 +1,147 @@
+{
+    "Voos": [
+        {
+            "tripulacao_id": "1949662912800",
+            "aviao": "7789",
+            "origem": "Bras\u00edlia",
+            "destino": "Manaus",
+            "duracao_estimada": 3.421481684628604,
+            "saida": "2024-12-29T22:32:00",
+            "chegada": "2024-12-30T01:57:17",
+            "status": "Finalizado",
+            "id": 2602266448576
+        },
+        {
+            "tripulacao_id": "2335020887952",
+            "aviao": "7789",
+            "origem": "Fortaleza",
+            "destino": "Manaus",
+            "duracao_estimada": 16.970353231099477,
+            "saida": "2024-12-29T22:52:00",
+            "chegada": "2024-12-30T15:50:13",
+            "status": "Embarque",
+            "id": 2607766338576
+        },
+        {
+            "tripulacao_id": "2335020887952",
+            "aviao": "7789",
+            "origem": "Fortaleza",
+            "destino": "Manaus",
+            "duracao_estimada": 16.970353231099477,
+            "saida": "2024-12-29T22:54:00",
+            "chegada": "2024-12-30T15:52:13",
+            "status": "Em Voo",
+            "id": 2902266338576
+        },
+        {
+            "tripulacao_id": "2335020887952",
+            "aviao": "7789",
+            "origem": "Fortaleza",
+            "destino": "Curitiba",
+            "duracao_estimada": 10.632996290407222,
+            "saida": "2024-12-29T22:54:00",
+            "chegada": "2024-12-30T09:31:58",
+            "status": "Finalizado",
+            "id": 2702266338576
+        },
+        {
+            "tripulacao_id": "2335020676624",
+            "aviao": "534",
+            "origem": "Manaus",
+            "destino": "Recife",
+            "duracao_estimada": 266.289545462274,
+            "saida": "2025-01-02T14:43:00",
+            "chegada": "2025-01-13T17:00:22",
+            "status": "Em Voo",
+            "id": 8602266338576
+        },
+        {
+            "tripulacao_id": "2335020887952",
+            "aviao": "1243",
+            "origem": "Manaus",
+            "destino": "Bel\u00e9m",
+            "duracao_estimada": 82.36969116924534,
+            "saida": "2025-01-02T14:43:00",
+            "chegada": "2025-01-06T01:05:10",
+            "status": "Em Voo",
+            "id": 2602866338576
+        },
+        {
+            "tripulacao_id": "2053612533280",
+            "aviao": "1243",
+            "origem": "Bras\u00edlia",
+            "destino": "Bel\u00e9m",
+            "duracao_estimada": 92.51691781808016,
+            "saida": "2025-01-08T20:54:00",
+            "chegada": "2025-01-12T17:25:00",
+            "status": "Cancelado",
+            "id": 2602266338579
+        },
+        {
+            "tripulacao_id": "2335020887952",
+            "aviao": "12",
+            "origem": "Manaus",
+            "destino": "An\u00e1polis",
+            "duracao_estimada": 304.9642212615839,
+            "saida": "2025-01-09T19:04:00",
+            "chegada": "2025-01-22T12:01:51",
+            "status": "Planejado",
+            "id": 2602266338576
+        },
+        {
+            "tripulacao_id": "2335020887952",
+            "aviao": "534",
+            "origem": "Recife",
+            "destino": "Porto Alegre",
+            "duracao_estimada": 553.0291944104915,
+            "saida": "2025-01-09T19:06:00",
+            "chegada": "2025-02-01T20:07:45",
+            "status": "Planejado",
+            "id": 2067234598800
+        },
+        {
+            "tripulacao_id": "2471063134496",
+            "aviao": "1243",
+            "origem": "Recife",
+            "destino": "Salvador",
+            "duracao_estimada": 51.611281332499345,
+            "saida": "2025-01-09T19:09:00",
+            "chegada": "2025-01-11T22:45:40",
+            "status": "Planejado",
+            "id": 1979148854880
+        },
+        {
+            "tripulacao_id": "2335020887952",
+            "aviao": "12",
+            "origem": "Fortaleza",
+            "destino": "Manaus",
+            "duracao_estimada": 482.5944200093914,
+            "saida": "2025-01-09T20:02:00",
+            "chegada": "2025-01-29T22:37:39",
+            "status": "Embarque",
+            "id": 2332954259344
+        },
+        {
+            "tripulacao_id": "2335020887952",
+            "aviao": "7789",
+            "origem": "Fortaleza",
+            "destino": "Manaus",
+            "duracao_estimada": 16.970353231099477,
+            "saida": "2025-01-09T20:43:00",
+            "chegada": "2025-01-10T13:41:13",
+            "status": "Planejado",
+            "id": 2513256651376
+        },
+        {
+            "tripulacao_id": "2335020887952",
+            "aviao": "7789",
+            "origem": "Fortaleza",
+            "destino": "Manaus",
+            "duracao_estimada": 16.970353231099477,
+            "saida": "2025-01-09T20:43:00",
+            "chegada": "2025-01-10T13:41:13",
+            "status": "Planejado",
+            "id": 2513256653200
+        }
+    ]
+}

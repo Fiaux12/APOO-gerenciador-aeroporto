@@ -1,4 +1,10 @@
-from coordenadas import Coordenadas
+from classes.voo.coordenadas import Coordenadas
+from modulos.manipula_arquivos import ManipulaArquivos
+
+CAMINHO = "base_dados/voo/locais.json"
+cabecalho = 'Locais'
+colunas = ["cidade","estado", "pais", "coordenadas"]
+
 
 # Define, tanto o local de partida, quanto o local de destino
 class Local():
@@ -37,9 +43,15 @@ class Local():
     def pais(self, valor):
         self.__pais = valor
 
-# TODO: verificar se da certo
     @coordenadas.setter
     def coordenadas(self, valor):
-        coord = Coordenadas(valor)
-        self.__coordenadas = coord
-   
+        if not isinstance(valor, Coordenadas):
+            raise TypeError("O valor deve ser uma instância da classe Coordenadas.")
+        
+        self.__coordenadas = valor
+            
+    #--------------PUBLIC---------------
+
+    def carregarListaLocal():
+        lista = ManipulaArquivos.carregar_informacoes(CAMINHO, cabecalho, colunas)
+        return lista

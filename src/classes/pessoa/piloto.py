@@ -10,8 +10,8 @@ colunas = ["nome","cpf","tipo_aviao","numero_licenca"]
 class Piloto(Pessoa):
     def __init__(self, nome, cpf) -> None:
         super().__init__(nome, cpf)
-        self.__tipo_aviao = 0
-        self.__numero_licenca = 0
+        self.__tipo_aviao = None
+        self.__numero_licenca = None
 
 
     #--------------GET--------------
@@ -33,17 +33,17 @@ class Piloto(Pessoa):
 
     @tipo_aviao.setter
     def tipo_aviao(self, valor):
-        if valor in (EnumTipoAviao.CARGA, EnumTipoAviao.PASSAGEIRO):  
+        if valor in (EnumTipoAviao.CARGA, EnumTipoAviao.PASSAGEIRO) and valor != None:  
             self.__tipo_aviao = valor
         else:
-            raise ValueError("Tipo de avião inválido!")
+            raise Exception("Tipo de avião inválido!")
     
     @numero_licenca.setter
     def numero_licenca(self, valor):
         if valor.isdigit():  
             self.__numero_licenca = valor
         else:
-            raise ValueError("Número da licença inválido!")
+            raise Exception("Número da licença inválido!")
         
     #--------------PRIVATE--------------
 
@@ -54,7 +54,12 @@ class Piloto(Pessoa):
         piloto.tipo_aviao = tipo_aviao
         piloto.numero_licenca = numero_licenca
 
-        df = Piloto.carregarListaPilotos()
+        pilotos = Piloto.carregarListaPilotos()
+
+        for _, piloto_ in pilotos.iterrows():
+            if piloto_["cpf"] == cpf:
+                raise Exception("Já existe um piloto com esse CPF!")
+        
         novo_piloto = pd.DataFrame([
             {
                 "nome": piloto.nome,
@@ -64,10 +69,12 @@ class Piloto(Pessoa):
             }
         ])
 
-        df = pd.concat([df, novo_piloto], ignore_index=True)
-        ManipulaArquivos.salvar_informacoes(df, CAMINHO_PILOTOS, cabecalho)
+        pilotos = pd.concat([pilotos, novo_piloto], ignore_index=True)
+        ManipulaArquivos.salvar_informacoes(pilotos, CAMINHO_PILOTOS, cabecalho)
     
     def carregarListaPilotos():
         lista_pilotos = ManipulaArquivos.carregar_informacoes(CAMINHO_PILOTOS, cabecalho, colunas)
         return lista_pilotos
     
+        
+        

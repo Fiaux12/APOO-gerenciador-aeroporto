@@ -8,12 +8,22 @@ class ModuloPiloto():
 
     def cadastrar_piloto():
         def button_clicked(e):
-            tipo_aviao = EnumTipoAviao.CARGA if aviao_carga.value else EnumTipoAviao.PASSAGEIRO
-            piloto.Piloto.cadastrar(nome.value, cpf.value, tipo_aviao, licenca.value)
+            tipo_aviao = None
+            if aviao_carga.value != False and aviao_passageiro != False:
+                tipo_aviao = EnumTipoAviao.CARGA if aviao_carga.value else EnumTipoAviao.PASSAGEIRO
+            
+            try:
+                piloto.Piloto.cadastrar(nome.value, cpf.value, tipo_aviao, licenca.value)
+                t.value = f"Piloto {nome.value} cadastrado!"
+                t.color = ft.Colors.GREEN
 
-            t.value = f"Textboxes values are: '{nome.value}', '{cpf.value}', '{licenca.value}', '{aviao_carga.value}','{aviao_passageiro.value}', '{aviao_carga.value}'."
+            except Exception as e:
+                print(f"An exception occurred: {e}")
+                t.value = f"{e}"
+                t.color = ft.Colors.RED
+
             t.update()
-        
+
         def aviao_carga_changed(e):
             if aviao_carga.value:
                 aviao_passageiro.value = False
@@ -24,7 +34,7 @@ class ModuloPiloto():
                 aviao_carga.value = False
                 aviao_carga.update()
 
-        t = ft.Text()
+        t = ft.Text(size=15)
         nome = ft.TextField(label="Nome", width=500)
         cpf = ft.TextField(label="CPF", width=500)
         licenca = ft.TextField(label="Número da Licença", width=500)
