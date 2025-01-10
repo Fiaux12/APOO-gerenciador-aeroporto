@@ -1,7 +1,10 @@
 
 class Coordenadas():
     def __init__(self) -> None:
+        # Latitude - float
         self.__latitude = None
+
+        # Longitude - float
         self.__longitude = None
 
    #--------------GET--------------

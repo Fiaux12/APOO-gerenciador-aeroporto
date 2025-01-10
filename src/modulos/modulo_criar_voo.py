@@ -1,16 +1,11 @@
 import flet as ft
-import classes.pessoa.piloto  as piloto
-import classes.pessoa.comissario_de_voo  as comissario
-from classes.enums.enum_tipo_aviao import EnumTipoAviao
 import classes.voo.tripulacao as tripulacao
-import classes.pessoa.passageiro as passageiros
 import classes.voo.voo as voo
 import classes.voo.local as local
 import classes.aviao.aviao as aviao
 import classes.utils.input_tempo as input_tempo
 import classes.utils.input_data as input_data
 import datetime
-
 
 
 class ModuloCriarVoo():

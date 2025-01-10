@@ -1,11 +1,13 @@
 import flet as ft
 from classes.enums.enum_status_voo import EnumStatusVoo
-import classes.pessoa.passageiro as passageiros
 from classes.voo.tripulacao import Tripulacao
 import classes.voo.voo as voo
 
 class ModuloVoo():
+
+    #Container da tabela
     tabela_container = ft.Container()
+
     def __init__(self) -> None:
         pass
 

@@ -9,6 +9,8 @@ colunas = ["nome","cpf","passaporte"]
 class Passageiro(Pessoa):
     def __init__(self, nome:str, cpf:int) -> None:
         super().__init__(nome, cpf)
+
+        # Passaporte - str
         self.__passaporte = None 
 
    #--------------GET--------------

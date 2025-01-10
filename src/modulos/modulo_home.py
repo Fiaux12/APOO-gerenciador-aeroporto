@@ -4,7 +4,6 @@ class ModuloHome():
     def __init__(self) -> None:
         pass
 
-
     def home():
 
         return ft.Column(

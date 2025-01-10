@@ -9,9 +9,16 @@ colunas = ["cidade","estado", "pais", "coordenadas"]
 # Define, tanto o local de partida, quanto o local de destino
 class Local():
     def __init__(self, cidade:str, estado:str, pais:str, coordenadas: Coordenadas) -> None:
+        # Cidade - str
         self.__cidade = cidade
+
+        # Estado - str
         self.__estado = estado
+
+        # Pais - str
         self.__pais = pais
+
+        # Coordenadas - Cordenadas
         self.__coordenadas = coordenadas
 
    #--------------GET--------------

@@ -1,6 +1,5 @@
 import flet as ft
 import classes.pessoa.comissario_de_voo  as comissario
-from classes.enums.enum_tipo_aviao import EnumTipoAviao
 import classes.voo.tripulacao as tripulacao
 import classes.pessoa.piloto as piloto
 

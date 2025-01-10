@@ -7,10 +7,6 @@ SETTINGS_DATA_FILE = "../assets/settings/settings.json"
 class ManipulaArquivos():
     def __init__(self) -> None:
         pass
-        
-
-    # TODO: Função para carregar os dados de um arquivo JSON em um DataFrame
-
 
     # Função para carregar os dados de um arquivo JSON em um DataFrame
     def carregar_informacoes(caminho, cabecalho, colunas):
