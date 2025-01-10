@@ -16,14 +16,31 @@ colunas = ["tripulacao_id","aviao","origem","destino", "duracao_estimada", "said
 
 class Voo():
     def __init__(self) -> None:
-        self.__tripulacao_id = None     #int
-        self.__aviao = None             #Aviao
-        self.__origem = None            #Local
-        self.__destino = None           #Local
-        self.__duracao_estimada = None  #float | em horas
-        self.__saida = None             #Datetime
-        self.__chegada = None           #Datetime
-        self.__status = None            #EnumStatusVoo
+        # Identificador único da tripulação - str
+        self.__tripulacao_id = None
+
+        # Avião atribuído à tripulação - Aviao
+        self.__aviao = None
+
+        # Origem do voo - Local
+        self.__origem = None
+
+        # Destino do voo - Local
+        self.__destino = None
+
+        # Duração estimada do voo - float (em horas)
+        self.__duracao_estimada = None
+
+        # Hora de saída do voo - Datetime
+        self.__saida = None
+
+        # Hora de chegada do voo - Datetime
+        self.__chegada = None
+
+        # Status do voo - EnumStatusVoo
+        self.__status = None
+
+        # Identificador do Voo - int
         self.__id = id(self)
 
 
