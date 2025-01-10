@@ -9,10 +9,11 @@ class ModuloHome():
 
         return ft.Column(
             controls=[
-                ft.Text("Bem vindo!", size=30),
+                ft.Text("Gerenciador de Voos", size=30),
                 ft.Text("Bem-vindo ao Gerenciador de Voos: eficiência e segurança para conectar destinos.", size=20),
-                ft.Text("Faça  o cadastro dos pilotos e dos comissários de bordo para criar uma tripulação."),
-                ft.Text("Faça o cadastro dos aviões na aba, Aviões."),
-                ft.Text("Crie um voo com os dados criados e com os dados da nossa base de dados"),
+                ft.Text("Comece cadastrando os pilotos e os comissários de bordo para formar a tripulação necessária para os voos."),
+                ft.Text("Na aba 'Aviões', você pode cadastrar os aviões disponíveis para os voos."),
+                ft.Text("Crie e gerencie voos com os dados já cadastrados, e acompanhe tudo na aba 'Voos'."),
+                ft.Text("Atualize o status dos voos conforme eles progridem, garantindo o acompanhamento em tempo real."),
             ]
         )
