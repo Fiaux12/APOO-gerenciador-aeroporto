@@ -8,15 +8,30 @@ colunas = ["capacidade_maxima","velocidade_maxima","qtd_motores","modelo", "cons
 
 class Aviao():
     def __init__(self) -> None:
+        # Capacidade máxima do avião - str
         self._capacidade_maxima = None
+
+        # Velocidade máxima do avião - str
         self._velocidade_maxima = None
+
+        # Quantidade de motores da aeronave - str
         self._qtd_motores = None
+
+        # Modelo da aeronave (ex: Boeing 737, Airbus A320) - str
         self._modelo = None
+
+        # Consumo de combustível da aeronave - str
         self._consumo = None
+
+        # Peso máximo da aeronave - str
         self._peso_maximo = None
+
+        # Número de série único da aeronave - str
         self._numero_serie = None
+
+        # Tipo de aeronave - EnumTipoAviao
         self._tipo = None
-    
+
     #--------------GET--------------
 
     @property
