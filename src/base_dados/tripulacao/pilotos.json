@@ -4,13 +4,13 @@
             "nome": "Amanda",
             "cpf": 100,
             "tipo_aviao": "Carga",
-            "numero_licenca": 789654
+            "numero_licenca": "789654"
         },
         {
             "nome": "Julia Alves",
             "cpf": 54,
             "tipo_aviao": "Passageiro",
-            "numero_licenca": 659814
+            "numero_licenca": "659814"
         },
         {
             "nome": "Erick",

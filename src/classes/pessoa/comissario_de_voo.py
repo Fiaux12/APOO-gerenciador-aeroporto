@@ -10,7 +10,11 @@ colunas = ["nome","cpf","linguas","numero_certificado"]
 class ComissarioDeVoo(Pessoa):
     def __init__(self, nome, cpf) -> None:
         super().__init__(nome, cpf)
+
+        #Línguas faladas - Lista de str
         self.__linguas = []
+
+        # Número do certificado - str
         self.__numero_certificado = None
 
     #--------------GET--------------

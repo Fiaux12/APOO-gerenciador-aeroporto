@@ -2,8 +2,8 @@ from abc import ABC, abstractmethod
 
 class Pessoa(ABC):
     def __init__(self, nome, cpf) -> None:
-        self._nome = None
-        self._cpf = None
+        self._nome = None   # str
+        self._cpf = None    # str
         self.nome = nome    # Chama o setter do nome
         self.cpf = cpf      # Chama o setter do cpf
 

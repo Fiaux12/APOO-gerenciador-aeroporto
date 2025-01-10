@@ -1,6 +1,4 @@
 import pandas as pd
-from classes.pessoa.comissario_de_voo import ComissarioDeVoo
-from classes.pessoa.piloto import Piloto
 from modulos.manipula_arquivos import ManipulaArquivos
 
 CAMINHO_TRIPULACAO = "base_dados/voo/tripulacoes.json"
@@ -11,8 +9,14 @@ colunas = ["id","comissarios_voo","pilotos"]
 class Tripulacao():
 
     def __init__(self) -> None:
+
+        # Lista de comissarios de voo - Lista de str
         self.__comissarios_voo = None
+
+        # Lista coposta por piloto e copiloto - Lista de str
         self.__pilotos = None  
+
+        # Identificação da tripulação
         self.__id = id(self)
 
     #--------------GET--------------

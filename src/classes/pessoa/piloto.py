@@ -10,7 +10,11 @@ colunas = ["nome","cpf","tipo_aviao","numero_licenca"]
 class Piloto(Pessoa):
     def __init__(self, nome, cpf) -> None:
         super().__init__(nome, cpf)
+
+        # Tipo do avião - EnumTipoAviao
         self.__tipo_aviao = None
+
+        # Numero da Licença do Piloto - str
         self.__numero_licenca = None
 
 
