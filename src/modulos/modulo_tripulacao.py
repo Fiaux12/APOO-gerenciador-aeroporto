@@ -29,10 +29,10 @@ class ModuloTripulacao():
             t.update()
             
 
-        pilotos = piloto.Piloto.carregarListaPilotos()
+        pilotos = piloto.Piloto.carregarLista()
         opcoes_pilotos = [ft.dropdown.Option(f"{piloto["nome"]}, {piloto["cpf"]}") for _, piloto in pilotos.iterrows()] if not pilotos.empty else []
 
-        comissarios = comissario.ComissarioDeVoo.carregarListaComissarios()
+        comissarios = comissario.ComissarioDeVoo.carregarLista()
         opcoes_comissarios = [ft.dropdown.Option(f"{comissario["nome"]}, {comissario["cpf"]}") for _, comissario in comissarios.iterrows()] if not comissarios.empty else []
 
         dropdowns_comissarios = []

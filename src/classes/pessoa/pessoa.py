@@ -34,3 +34,11 @@ class Pessoa(ABC):
             self._cpf = valor
         else:
             raise Exception("CPF inválido!")
+
+    @abstractmethod
+    def cadastrar(nome, cpf):
+        pass
+    
+    @abstractmethod
+    def carregarLista():
+        pass

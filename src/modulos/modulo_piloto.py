@@ -50,7 +50,7 @@ class ModuloPiloto():
 
     def dialog():
         def carregar_lista_pilotos():
-            df = piloto.Piloto.carregarListaPilotos()
+            df = piloto.Piloto.carregarLista()
 
             rows = []
             for _, row in df.iterrows():

@@ -29,7 +29,10 @@ class Passageiro(Pessoa):
 
     #--------------PUBLIC--------------
 
-    def carregarListaPassageiros():
+    def carregarLista():
         lista_passageiros = ManipulaArquivos.carregar_informacoes(CAMINHO_PASSAGEIROS, cabecalho, colunas)
         return lista_passageiros
+    
+    def cadastrar(nome, cpf):
+        pass
     

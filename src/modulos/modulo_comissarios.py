@@ -49,7 +49,7 @@ class ModuloComissario():
 
     def dialog():
         def carregar_lista_comissarios():
-            df = comissario.ComissarioDeVoo.carregarListaComissarios()
+            df = comissario.ComissarioDeVoo.carregarLista()
 
             rows = []
             for _, row in df.iterrows():

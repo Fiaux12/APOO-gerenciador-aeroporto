@@ -57,7 +57,7 @@ class ComissarioDeVoo(Pessoa):
         comisario.linguas = linguas
         comisario.numero_certificado = numero_certificado
 
-        df = ComissarioDeVoo.carregarListaComissarios()
+        df = ComissarioDeVoo.carregarLista()
         novo_comissario = pd.DataFrame([
             {
                 "nome": comisario.nome,
@@ -70,7 +70,7 @@ class ComissarioDeVoo(Pessoa):
         df = pd.concat([df, novo_comissario], ignore_index=True)
         ManipulaArquivos.salvar_informacoes(df, CAMINHO_COMISSARIOS, cabecalho)
     
-    def carregarListaComissarios():
+    def carregarLista():
         lista_comissarios = ManipulaArquivos.carregar_informacoes(CAMINHO_COMISSARIOS, cabecalho, colunas)
         return lista_comissarios
     

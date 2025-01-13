@@ -16,7 +16,7 @@ class ModuloVoo():
             ModuloVoo.tabela_container.content = ModuloVoo.voosTable(rows)
 
     def visualizar_voos():
-        # lista_passageiros = passageiros.Passageiro.carregarListaPassageiros()
+        # lista_passageiros = passageiros.Passageiro.carregarLista()
 
         # controle_passageiros = []
         # for _, row in lista_passageiros.iterrows():

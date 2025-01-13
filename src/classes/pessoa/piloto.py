@@ -58,7 +58,7 @@ class Piloto(Pessoa):
         piloto.tipo_aviao = tipo_aviao
         piloto.numero_licenca = numero_licenca
 
-        pilotos = Piloto.carregarListaPilotos()
+        pilotos = Piloto.carregarLista()
 
         for _, piloto_ in pilotos.iterrows():
             if piloto_["cpf"] == cpf:
@@ -76,7 +76,7 @@ class Piloto(Pessoa):
         pilotos = pd.concat([pilotos, novo_piloto], ignore_index=True)
         ManipulaArquivos.salvar_informacoes(pilotos, CAMINHO_PILOTOS, cabecalho)
     
-    def carregarListaPilotos():
+    def carregarLista():
         lista_pilotos = ManipulaArquivos.carregar_informacoes(CAMINHO_PILOTOS, cabecalho, colunas)
         return lista_pilotos
     
