@@ -188,7 +188,7 @@ class Voo():
         if not tripulacao_id:
             raise Exception("Selecione uma tripulação!")
 
-        tripulacoes = Tripulacao.carregarListaTripulacao()
+        tripulacoes = Tripulacao.carregarLista()
         for _, tripulacao in tripulacoes.iterrows():
             if tripulacao["id"] == int(tripulacao_id):
                 voo.tripulacao_id = tripulacao_id

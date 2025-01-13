@@ -82,7 +82,7 @@ class ModuloTripulacao():
 
     def dialog():
         def carregar_lista_tripulacoes():
-            df = tripulacao.Tripulacao.carregarListaTripulacao()
+            df = tripulacao.Tripulacao.carregarLista()
 
             rows = []
             for _, row in df.iterrows():

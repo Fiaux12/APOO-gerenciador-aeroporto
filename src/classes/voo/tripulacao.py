@@ -66,7 +66,7 @@ class Tripulacao():
         tripulacao.pilotos = [piloto, copiloto]
         tripulacao.comissarios_voo = comissarios
 
-        df = Tripulacao.carregarListaTripulacao()
+        df = Tripulacao.carregarLista()
         nova_tripulacao = pd.DataFrame([
             {
                 "id": tripulacao.id,
@@ -78,7 +78,7 @@ class Tripulacao():
         df = pd.concat([df, nova_tripulacao], ignore_index=True)
         ManipulaArquivos.salvar_informacoes(df, CAMINHO_TRIPULACAO, cabecalho)
     
-    def carregarListaTripulacao():
+    def carregarLista():
         lista_tripulacoes = ManipulaArquivos.carregar_informacoes(CAMINHO_TRIPULACAO, cabecalho, colunas)
         return lista_tripulacoes
     

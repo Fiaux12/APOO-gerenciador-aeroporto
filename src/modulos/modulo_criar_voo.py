@@ -37,7 +37,7 @@ class ModuloCriarVoo():
             
             t.update()
 
-        tripulacoes = tripulacao.Tripulacao.carregarListaTripulacao()
+        tripulacoes = tripulacao.Tripulacao.carregarLista()
         opcoes_tripulacao = [ft.dropdown.Option(f'{tripulacao["id"]}') for _, tripulacao in tripulacoes.iterrows()] if not tripulacoes.empty else []
 
         avioes = aviao.Aviao.carregarListaAvioes()
