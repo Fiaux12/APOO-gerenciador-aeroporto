@@ -144,7 +144,7 @@ class Aviao():
         aviao.tipo = tipo
         
 
-        avioes = Aviao.carregarListaAvioes()
+        avioes = Aviao.carregarLista()
 
         for _, aviao_ in avioes.iterrows():
             if aviao_["numero_serie"] == numero_serie:
@@ -167,7 +167,7 @@ class Aviao():
         avioes = pd.concat([avioes, novo_aviao], ignore_index=True)
         ManipulaArquivos.salvar_informacoes(avioes, CAMINHO_AVIOES, cabecalho)
     
-    def carregarListaAvioes():
+    def carregarLista():
         lista_avioes = ManipulaArquivos.carregar_informacoes(CAMINHO_AVIOES, cabecalho, colunas)
         return lista_avioes
     

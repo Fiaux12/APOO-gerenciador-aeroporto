@@ -95,7 +95,7 @@ class ModuloAviao():
 
     def dialog():
         def carregar_lista_avioes():
-            df = aviao.Aviao.carregarListaAvioes()
+            df = aviao.Aviao.carregarLista()
 
             rows = []
             for _, row in df.iterrows():

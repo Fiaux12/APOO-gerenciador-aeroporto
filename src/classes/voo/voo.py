@@ -194,7 +194,7 @@ class Voo():
                 voo.tripulacao_id = tripulacao_id
                 break
             
-        avioes = Aviao.carregarListaAvioes()
+        avioes = Aviao.carregarLista()
         for _, aviao in avioes.iterrows():
             if aviao["numero_serie"] == numero_serie_aviao:
                 cad_aviao = Aviao()

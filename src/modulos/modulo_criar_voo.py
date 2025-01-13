@@ -40,7 +40,7 @@ class ModuloCriarVoo():
         tripulacoes = tripulacao.Tripulacao.carregarLista()
         opcoes_tripulacao = [ft.dropdown.Option(f'{tripulacao["id"]}') for _, tripulacao in tripulacoes.iterrows()] if not tripulacoes.empty else []
 
-        avioes = aviao.Aviao.carregarListaAvioes()
+        avioes = aviao.Aviao.carregarLista()
         opcoes_avioes = [ft.dropdown.Option(f'{aviao["numero_serie"]}') for _, aviao in avioes.iterrows()] if not avioes.empty else []
 
         locais = local.Local.carregarListaLocal()
