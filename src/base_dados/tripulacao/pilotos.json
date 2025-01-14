@@ -35,6 +35,12 @@
             "cpf": "493.125.106-46",
             "tipo_aviao": "Passageiro",
             "numero_licenca": "666"
+        },
+        {
+            "nome": "Ana Clara",
+            "cpf": "123456789",
+            "tipo_aviao": "Carga",
+            "numero_licenca": "321"
         }
     ]
 }
