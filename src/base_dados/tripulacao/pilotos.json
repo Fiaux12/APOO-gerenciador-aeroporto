@@ -1,40 +1,40 @@
 {
     "Pilotos": [
         {
-            "nome": "Amanda",
-            "cpf": 100,
+            "nome": "Amanda Fiaux",
+            "cpf": "064.944.054-41",
             "tipo_aviao": "Carga",
-            "numero_licenca": "789654"
+            "numero_licenca": "111"
         },
         {
             "nome": "Julia Alves",
-            "cpf": 54,
+            "cpf": "449.856.431-66",
             "tipo_aviao": "Passageiro",
-            "numero_licenca": "659814"
-        },
-        {
-            "nome": "Erick",
-            "cpf": "46987",
-            "tipo_aviao": "Carga",
-            "numero_licenca": "4444"
-        },
-        {
-            "nome": "Vitoria",
-            "cpf": "456987",
-            "tipo_aviao": "Carga",
-            "numero_licenca": "2222"
-        },
-        {
-            "nome": "Jo\u00e3o Fernando",
-            "cpf": "22588",
-            "tipo_aviao": "Carga",
             "numero_licenca": "222"
         },
         {
-            "nome": "Sofia",
-            "cpf": "13198437854",
+            "nome": "Erick Rocha",
+            "cpf": "923.160.497-02",
+            "tipo_aviao": "Carga",
+            "numero_licenca": "333"
+        },
+        {
+            "nome": "Vitoria Rigeiro",
+            "cpf": "710.830.254-36",
+            "tipo_aviao": "Carga",
+            "numero_licenca": "444"
+        },
+        {
+            "nome": "Jo\u00e3o Fernando",
+            "cpf": "054.139.480-00",
+            "tipo_aviao": "Carga",
+            "numero_licenca": "555"
+        },
+        {
+            "nome": "Sofia Santos",
+            "cpf": "493.125.106-46",
             "tipo_aviao": "Passageiro",
-            "numero_licenca": "67343298"
+            "numero_licenca": "666"
         }
     ]
 }
