@@ -142,14 +142,18 @@ class Voo():
         # usada para calcula a distancia entre dois pontos da terra
         raio_terra = 6371
 
-        delta_lat = self.origem.coordenadas.latitude - self.destino.coordenadas.latitude
-        delta_lon = self.origem.coordenadas.longitude - self.destino.coordenadas.longitude
-        
-        aux1 = math.sin(delta_lat / 2)**2 + math.cos(self.origem.coordenadas.latitude) * math.cos(self.destino.coordenadas.latitude) * math.sin(delta_lon / 2)**2
+        lat_origem_rad = math.radians(self.origem.coordenadas.latitude)
+        lat_destino_rad = math.radians(self.destino.coordenadas.latitude)
+        lon_origem_rad = math.radians(self.origem.coordenadas.longitude)
+        lon_destino_rad = math.radians(self.destino.coordenadas.longitude)
+
+        delta_lat = lat_destino_rad - lat_origem_rad
+        delta_lon = lon_destino_rad - lon_origem_rad
+
+        aux1 = math.sin(delta_lat / 2)**2 + math.cos(lat_origem_rad) * math.cos(lat_destino_rad) * math.sin(delta_lon / 2)**2
         distancia = 2 * raio_terra * math.asin(math.sqrt(aux1))
 
-        self.duracao_estimada =  distancia / float(self.aviao.velocidade_maxima) # h = km/(km/h)
-    
+        self.duracao_estimada = distancia / float(self.aviao.velocidade_maxima)
         
     def __cria_retorno(self):
         dias = int(self.duracao_estimada // 24)

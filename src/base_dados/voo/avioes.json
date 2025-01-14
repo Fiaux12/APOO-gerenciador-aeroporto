@@ -2,7 +2,7 @@
     "Avioes": [
         {
             "capacidade_maxima": "5000",
-            "velocidade_maxima": "910",
+            "velocidade_maxima": "280",
             "qtd_motores": "5",
             "modelo": "EMB 145 AEW&C",
             "consumo": "800",
@@ -12,7 +12,7 @@
         },
         {
             "capacidade_maxima": "347",
-            "velocidade_maxima": "850",
+            "velocidade_maxima": "280",
             "qtd_motores": "3",
             "modelo": "ERJ 145XR",
             "consumo": "200",
@@ -22,7 +22,7 @@
         },
         {
             "capacidade_maxima": "233",
-            "velocidade_maxima": "32",
+            "velocidade_maxima": "280",
             "qtd_motores": "12",
             "modelo": "dd",
             "consumo": "21",
@@ -32,7 +32,7 @@
         },
         {
             "capacidade_maxima": "54",
-            "velocidade_maxima": "32",
+            "velocidade_maxima": "280",
             "qtd_motores": "6554",
             "modelo": "EMB9984",
             "consumo": "6543",
@@ -42,7 +42,7 @@
         },
         {
             "capacidade_maxima": "123",
-            "velocidade_maxima": "123",
+            "velocidade_maxima": "280",
             "qtd_motores": "12",
             "modelo": "eweq",
             "consumo": "231",
@@ -52,7 +52,7 @@
         },
         {
             "capacidade_maxima": "34567",
-            "velocidade_maxima": "3212",
+            "velocidade_maxima": "280",
             "qtd_motores": "1",
             "modelo": "d2w",
             "consumo": "123",
@@ -62,7 +62,7 @@
         },
         {
             "capacidade_maxima": "45",
-            "velocidade_maxima": "654",
+            "velocidade_maxima": "280",
             "qtd_motores": "45",
             "modelo": "54k",
             "consumo": "485",
@@ -72,7 +72,7 @@
         },
         {
             "capacidade_maxima": "4",
-            "velocidade_maxima": "4",
+            "velocidade_maxima": "280",
             "qtd_motores": "4",
             "modelo": "4",
             "consumo": "4",
@@ -82,7 +82,7 @@
         },
         {
             "capacidade_maxima": "1",
-            "velocidade_maxima": "1",
+            "velocidade_maxima": "280",
             "qtd_motores": "1",
             "modelo": "1",
             "consumo": "1",
